@@ -1,15 +1,19 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import DriverList from './components/DriverList'
+import { QueryClient, QueryClientProvider,} from 'react-query'
+
+const queryClient = new QueryClient()
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
+    <QueryClientProvider client={queryClient}>
     <div className="App">
-poop
+      <DriverList/>
     </div>
+    </QueryClientProvider>
   )
 }
 

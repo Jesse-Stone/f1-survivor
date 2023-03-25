@@ -1,14 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import App from './App'
+import './index.css'
 
 const theme = createTheme({
-  // Your theme object here
+  typography: {
+    button: {
+      fontFamily: "'Roboto', sans-serif",
+      textTransform: 'none',
+    },
+  },
 });
 
 
-import App from './App'
-import './index.css'
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 
