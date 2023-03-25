@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 
 const getDrivers = async () => {
-  const response = await axios.get('http://ergast.com/api/f1/2023/drivers');
+  const response = await axios.get('https://ergast.com/api/f1/2023/drivers');
   console.log(response.data.MRData.DriverTable.Drivers)
   return response.data.MRData.DriverTable.Drivers;
 };
