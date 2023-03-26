@@ -1,8 +1,10 @@
 import {
+  Box,
   Card,
   CardContent,
   CardHeader,
   CardMedia,
+  Stack,
   Typography
 } from '@mui/material';
 import driversData from '../data/driversData';
@@ -11,18 +13,25 @@ const DriverProfile = ({driver}) => {
   const { givenName, familyName, nationality, permanentNumber, team } = driver;
 
   return (
-    <Card sx={{ maxWidth: 400 }}>
+    <Stack sx={{ maxWidth: 300, backgroundColor: 'white' }}>
       {driver && (
         <>
-          <CardHeader
-            title={`${givenName} ${familyName}`}
-            subheader={nationality}
-          />
+        <Stack direction={'row'} justifyContent={'space-between'} color="black">
+          <Stack>
+            <Typography variant='h6'>
+              {givenName}
+            </Typography>
+            <Typography variant='h5' fontWeight={'bold'}>
+              {familyName}
+            </Typography></Stack>     
+            {nationality}
+          </Stack>
           <CardMedia
             component="img"
-            height="300"
+            height="140"
             image = {`${driversData.Drivers.find(drivers => drivers.givenName === `${driver.givenName}`).picture}`}
             alt={driver.code}
+            sx={{ objectFit: 'scale-down' }}
           />
           <CardContent>
             <Typography variant="body2" color="text.secondary">
@@ -31,12 +40,12 @@ const DriverProfile = ({driver}) => {
               {permanentNumber}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {team}
+              {team.name}
             </Typography>
           </CardContent>
         </>
       )}
-    </Card>
+    </Stack>
   );
 };
 

@@ -1,8 +1,6 @@
-import { useState } from 'react'
 import './App.css'
-import DriverList from './components/DriverList'
 import { QueryClient, QueryClientProvider,} from 'react-query'
-import { Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import DriverProfile from './components/DriverProfile'
 import driversData from './data/driversData'
 
@@ -19,7 +17,6 @@ function App() {
       {/* <DriverList/>
       <DriverProfile/> */}
             {driversData.Drivers.map(driver => <DriverProfile key={driver.driverId} driver={driver} />)}
-
     </div>
     </QueryClientProvider>
   )
