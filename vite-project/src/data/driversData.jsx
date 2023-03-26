@@ -13,7 +13,7 @@ const driversData = {
   "picture" : "/driver-photos/Alexander.avif",
   "team": {
     "name":"Williams",
-    "color":""
+    "color":"#37BEDD"
     }
   },
   {
@@ -29,7 +29,7 @@ const driversData = {
   "picture" : "/driver-photos/Fernando.avif",
   "team": {
     "name":"Aston Martin",
-    "color":""
+    "color":"#358C75"
     }
   },
   {
@@ -45,7 +45,7 @@ const driversData = {
   "picture" : "/driver-photos/Valtteri.avif",
   "team": {
     "name":"Alfa Romeo",
-    "color":""
+    "color":"#C92D4B"
     }
   },
   {
@@ -61,7 +61,7 @@ const driversData = {
   "picture" : "/driver-photos/Nyck.avif",
   "team": {
     "name":"Alpha Tauri",
-    "color":""
+    "color":"#5E8FAA"
     }
   },
   {
@@ -77,7 +77,7 @@ const driversData = {
   "picture" : "/driver-photos/Pierre.avif",
   "team": {
     "name":"Alpine",
-    "color":""
+    "color":"#2293D1"
     }
   },
   {
@@ -93,7 +93,7 @@ const driversData = {
   "picture" : "/driver-photos/Lewis.avif",
   "team": {
     "name":"Mercedes",
-    "color":""
+    "color":"#6CD3BF"
     }
   },
   {
@@ -109,7 +109,7 @@ const driversData = {
   "picture" : "/driver-photos/Nico.avif",
   "team": {
     "name":"Haas",
-    "color":""
+    "color":"#B6BABD"
     }
   },
   {
@@ -126,7 +126,7 @@ const driversData = {
   "picture" : "/driver-photos/Charles.avif",
   "team": {
     "name":"Ferrari",
-    "color":""
+    "color":"#F91536"
     }
   },
   {
@@ -142,7 +142,7 @@ const driversData = {
   "picture" : "/driver-photos/Kevin.avif",
   "team": {
     "name":"Haas",
-    "color":""
+    "color":"#B6BABD"
     }
   },
   {
@@ -158,7 +158,7 @@ const driversData = {
   "picture" : "/driver-photos/Lando.avif",
   "team": {
     "name":"Mclaren",
-    "color":""
+    "color":"#F58020"
     }
   },
   {
@@ -174,7 +174,7 @@ const driversData = {
   "picture" : "/driver-photos/Esteban.avif",
   "team": {
     "name":"Alpine",
-    "color":""
+    "color":"#2293D1"
     }
   },
   {
@@ -190,7 +190,7 @@ const driversData = {
   "picture" : "/driver-photos/Sergio.avif",
   "team": {
     "name":"Red Bull",
-    "color":""
+    "color":"#3671C6"
     }
   },
   {
@@ -206,7 +206,7 @@ const driversData = {
   "picture" : "/driver-photos/Oscar.avif",
   "team": {
     "name":"Mclaren",
-    "color":""
+    "color":"#F58020"
     }
   },
   {
@@ -222,7 +222,7 @@ const driversData = {
   "picture" : "/driver-photos/George.avif",
   "team": {
     "name":"Mercedes",
-    "color":""
+    "color":"#6CD3BF"
     }
   },
   {
@@ -238,7 +238,7 @@ const driversData = {
   "picture" : "/driver-photos/Carlos.avif",
   "team": {
     "name":"Ferrari",
-    "color":""
+    "color":"#F91536"
     }
   },
   {
@@ -254,7 +254,7 @@ const driversData = {
   "picture" : "/driver-photos/Logan.avif",
   "team": {
     "name":"Williams",
-    "color":""
+    "color":"#37BEDD"
     }
   },
   {
@@ -270,7 +270,7 @@ const driversData = {
   "picture" : "/driver-photos/Lance.avif",
   "team": {
     "name":"Aston Martin",
-    "color":""
+    "color":"#358C75"
     }
   },
   {
@@ -286,7 +286,7 @@ const driversData = {
   "picture" : "/driver-photos/Yuki.avif",
   "team": {
     "name":"Alpha Tauri",
-    "color":""
+    "color":"#5E8FAA"
     }
   },
   {
@@ -302,7 +302,7 @@ const driversData = {
   "picture" : "/driver-photos/Max.avif",
   "team": {
     "name":"Red Bull",
-    "color":""
+    "color":"#3671C6"
     }
   },
   {
@@ -318,7 +318,7 @@ const driversData = {
   "picture" : "/driver-photos/Zhou.avif",
   "team": {
     "name": "Alfa Romeo",
-    "color": "red"
+    "color":"#C92D4B"
     }
   }
   ]
