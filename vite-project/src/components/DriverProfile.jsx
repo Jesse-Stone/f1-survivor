@@ -5,18 +5,18 @@ import {
   CardMedia,
   Typography
 } from '@mui/material';
-import { useEffect, useState } from 'react';
 import driversData from '../data/driversData';
 
-const DriverProfile = () => {
-  const [driver, setDriver] = useState(driversData.Drivers[0]);
+const DriverProfile = ({driver}) => {
+  const { givenName, familyName, nationality, permanentNumber, team } = driver;
+
   return (
     <Card sx={{ maxWidth: 400 }}>
       {driver && (
         <>
           <CardHeader
-            title={`${driver.givenName} ${driver.familyName}`}
-            subheader={driver.nationality}
+            title={`${givenName} ${familyName}`}
+            subheader={nationality}
           />
           <CardMedia
             component="img"
@@ -26,13 +26,12 @@ const DriverProfile = () => {
           />
           <CardContent>
             <Typography variant="body2" color="text.secondary">
-              {driver.dateOfBirth}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {driver.permanentNumber}
+              {permanentNumber}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {driver.team}
+              {team}
             </Typography>
           </CardContent>
         </>

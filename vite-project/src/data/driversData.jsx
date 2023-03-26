@@ -9,7 +9,8 @@ const driversData = {
   "familyName": "Albon",
   "dateOfBirth": "1996-03-23",
   "nationality": "Thai",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Alexander.avif",
+  "team": "Williams"
   },
   {
   "driverId": "alonso",
@@ -20,7 +21,8 @@ const driversData = {
   "familyName": "Alonso",
   "dateOfBirth": "1981-07-29",
   "nationality": "Spanish",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Fernando.avif",
+  "team": "Aston Martin"
   },
   {
   "driverId": "bottas",
@@ -31,7 +33,8 @@ const driversData = {
   "familyName": "Bottas",
   "dateOfBirth": "1989-08-28",
   "nationality": "Finnish",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Valtteri.avif",
+  "team": "Alfa Romeo"
   },
   {
   "driverId": "de_vries",
@@ -42,7 +45,8 @@ const driversData = {
   "familyName": "de Vries",
   "dateOfBirth": "1995-02-06",
   "nationality": "Dutch",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Nyck.avif",
+  "team": "Alpha Tauri"
   },
   {
   "driverId": "gasly",
@@ -53,7 +57,8 @@ const driversData = {
   "familyName": "Gasly",
   "dateOfBirth": "1996-02-07",
   "nationality": "French",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Pierre.avif",
+  "team": "Alpine"
   },
   {
   "driverId": "hamilton",
@@ -64,7 +69,8 @@ const driversData = {
   "familyName": "Hamilton",
   "dateOfBirth": "1985-01-07",
   "nationality": "British",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Lewis.avif",
+  "team": "Mercedes"
   },
   {
   "driverId": "hulkenberg",
@@ -75,7 +81,8 @@ const driversData = {
   "familyName": "Hülkenberg",
   "dateOfBirth": "1987-08-19",
   "nationality": "German",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Nico.avif",
+  "team" : "Haas"
   },
   {
   "driverId": "leclerc",
@@ -86,7 +93,8 @@ const driversData = {
   "familyName": "Leclerc",
   "dateOfBirth": "1997-10-16",
   "nationality": "Monegasque",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Charles.avif",
+  "team": "Ferrari"
   },
   {
   "driverId": "kevin_magnussen",
@@ -97,7 +105,8 @@ const driversData = {
   "familyName": "Magnussen",
   "dateOfBirth": "1992-10-05",
   "nationality": "Danish",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Kevin.avif",
+  "team": "Haas"
   },
   {
   "driverId": "norris",
@@ -108,7 +117,8 @@ const driversData = {
   "familyName": "Norris",
   "dateOfBirth": "1999-11-13",
   "nationality": "British",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Lando.avif",
+  "team": "Mclaren"
   },
   {
   "driverId": "ocon",
@@ -119,7 +129,8 @@ const driversData = {
   "familyName": "Ocon",
   "dateOfBirth": "1996-09-17",
   "nationality": "French",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Esteban.avif",
+  "team": "Alpine"
   },
   {
   "driverId": "perez",
@@ -130,7 +141,8 @@ const driversData = {
   "familyName": "Pérez",
   "dateOfBirth": "1990-01-26",
   "nationality": "Mexican",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Sergio.avif",
+  "team": "Red Bull"
   },
   {
   "driverId": "piastri",
@@ -141,7 +153,8 @@ const driversData = {
   "familyName": "Piastri",
   "dateOfBirth": "2001-04-06",
   "nationality": "Australian",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Oscar.avif",
+  "team": "Mclaren"
   },
   {
   "driverId": "russell",
@@ -152,7 +165,8 @@ const driversData = {
   "familyName": "Russell",
   "dateOfBirth": "1998-02-15",
   "nationality": "British",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/George.avif",
+  "team": "Mercedes"
   },
   {
   "driverId": "sainz",
@@ -163,7 +177,8 @@ const driversData = {
   "familyName": "Sainz",
   "dateOfBirth": "1994-09-01",
   "nationality": "Spanish",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Carlos.avif",
+  "team": "Ferrari"
   },
   {
   "driverId": "sargeant",
@@ -174,7 +189,8 @@ const driversData = {
   "familyName": "Sargeant",
   "dateOfBirth": "2000-12-31",
   "nationality": "American",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Logan.avif",
+  "team": "Williams"
   },
   {
   "driverId": "stroll",
@@ -185,7 +201,8 @@ const driversData = {
   "familyName": "Stroll",
   "dateOfBirth": "1998-10-29",
   "nationality": "Canadian",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Lance.avif",
+  "team": "Aston Martin"
   },
   {
   "driverId": "tsunoda",
@@ -196,7 +213,8 @@ const driversData = {
   "familyName": "Tsunoda",
   "dateOfBirth": "2000-05-11",
   "nationality": "Japanese",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Yuki.avif",
+  "team": "Alpha Tauri"
   },
   {
   "driverId": "max_verstappen",
@@ -207,7 +225,8 @@ const driversData = {
   "familyName": "Verstappen",
   "dateOfBirth": "1997-09-30",
   "nationality": "Dutch",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Max.avif",
+  "team": "Red Bull"
   },
   {
   "driverId": "zhou",
@@ -218,7 +237,8 @@ const driversData = {
   "familyName": "Zhou",
   "dateOfBirth": "1999-05-30",
   "nationality": "Chinese",
-  "picture" : "/driver-photos/Alexander.avif"
+  "picture" : "/driver-photos/Zhou.avif",
+  "team": "Alfa Romeo"
   }
   ]
   }
