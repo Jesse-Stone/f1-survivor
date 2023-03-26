@@ -10,8 +10,8 @@ const DriverProfile = ({ driver }) => {
         backgroundColor: 'white',
         paddingTop: 1.5,
         paddingRight: 1,
-        paddingLeft: 1
-        // marginRight: '5px'
+        paddingLeft: 1,
+        margin:'5px 5px 5px 5px'
       }}
     >
       {driver && (
@@ -56,15 +56,15 @@ const DriverProfile = ({ driver }) => {
               ).picture
             }`}
             alt={driver.code}
-            sx={{ objectFit: 'scale-down', paddingLeft: '20px' }}
+            sx={{ objectFit: 'scale-down', paddingLeft: '30px' }}
           />
           <Box sx={{
             position: 'absolute',
             zIndex: '10',
-            paddingTop: '225px',
+            paddingTop: '210px',
             paddingLeft: '25px'
           }}>
-            <Typography variant="profile" fontSize={50} color={`${team.color}`}>
+            <Typography variant="profile" fontSize={60} color={`${team.color}`}>
               {permanentNumber}
             </Typography>
           </Box>
