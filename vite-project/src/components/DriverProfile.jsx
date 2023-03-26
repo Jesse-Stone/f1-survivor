@@ -30,23 +30,16 @@ const DriverProfile = ({driver}) => {
             <img src={flag} height={'60'}></img>
           </Stack>
           <Divider width={'40%'}/>
+          <Typography variant="body2" color="text.secondary">
+              {team.name}
+            </Typography>
           <CardMedia
             component="img"
-            height="200"
+            height="150"
             image = {`${driversData.Drivers.find(drivers => drivers.givenName === `${driver.givenName}`).picture}`}
             alt={driver.code}
             sx={{ objectFit: 'scale-down' }}
           />
-          <CardContent>
-            <Typography variant="body2" color="text.secondary">
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {permanentNumber}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {team.name}
-            </Typography>
-          </CardContent>
         </>
       )}
     </Stack>
