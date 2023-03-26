@@ -12,11 +12,11 @@ function App() {
       {/* <img src="/f1_favicon.png" alt="image" width="250" height="250" /> */}
       <>
         <Stack justifyContent={'center'} flexDirection={'row'}>
-          <Typography variant="profile" mb={5} fontSize={50}>
+          <Typography variant="profile" mb={5} fontSize={40}>
             PICK YOUR DRIVER
           </Typography>
         </Stack>
-        <Grid justifyContent="center" container spacing={2}>
+        <Grid justifyContent="center">
           {driversData.Drivers.map((driver) => (
             <DriverProfile key={driver.driverId} driver={driver} />
           ))}
