@@ -5,7 +5,15 @@ const theme = createTheme({
     button: {
       textTransform: 'none',
     },
-  }
+    profile: {
+      fontSize: 28,
+      fontFamily: [
+        'Racing Sans One',
+        'cursive',
+      ].join(','),
+    }    
+  },
+
 }
 );
 

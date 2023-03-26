@@ -1,6 +1,6 @@
 import './App.css'
 import { QueryClient, QueryClientProvider,} from 'react-query'
-import { Box, Typography } from '@mui/material'
+import { Box, Grid, Stack, Typography } from '@mui/material'
 import DriverProfile from './components/DriverProfile'
 import driversData from './data/driversData'
 
@@ -13,10 +13,13 @@ function App() {
     <QueryClientProvider client={queryClient}>
     <div className="App">
     <img src="/f1_favicon.png" alt="image" width="250" height="250" />
-    <Typography variant='h3'>Testing API Fetching and Caching</Typography>
-      {/* <DriverList/>
-      <DriverProfile/> */}
-            {driversData.Drivers.map(driver => <DriverProfile key={driver.driverId} driver={driver} />)}
+    <Stack flexDirection={'row'}>
+    <Grid container spacing={2}>
+    <Grid item xs={12}>
+    {driversData.Drivers.map(driver => <DriverProfile key={driver.driverId} driver={driver} />)}
+    </Grid>
+    </Grid>
+    </Stack>
     </div>
     </QueryClientProvider>
   )

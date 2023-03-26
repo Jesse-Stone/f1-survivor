@@ -9,6 +9,7 @@ const driversData = {
   "familyName": "Albon",
   "dateOfBirth": "1996-03-23",
   "nationality": "Thai",
+  "flag": "https://flagsapi.com/TH/shiny/64.png",
   "picture" : "/driver-photos/Alexander.avif",
   "team": {
     "name":"Williams",
@@ -24,6 +25,7 @@ const driversData = {
   "familyName": "Alonso",
   "dateOfBirth": "1981-07-29",
   "nationality": "Spanish",
+  "flag": "https://flagsapi.com/ES/shiny/64.png",
   "picture" : "/driver-photos/Fernando.avif",
   "team": {
     "name":"Aston Martin",
@@ -39,6 +41,7 @@ const driversData = {
   "familyName": "Bottas",
   "dateOfBirth": "1989-08-28",
   "nationality": "Finnish",
+  "flag": "https://flagsapi.com/FI/shiny/64.png",
   "picture" : "/driver-photos/Valtteri.avif",
   "team": {
     "name":"Alfa Romeo",
@@ -54,6 +57,7 @@ const driversData = {
   "familyName": "de Vries",
   "dateOfBirth": "1995-02-06",
   "nationality": "Dutch",
+  "flag": "https://flagsapi.com/NL/shiny/64.png",
   "picture" : "/driver-photos/Nyck.avif",
   "team": {
     "name":"Alpha Tauri",
@@ -69,6 +73,7 @@ const driversData = {
   "familyName": "Gasly",
   "dateOfBirth": "1996-02-07",
   "nationality": "French",
+  "flag": "https://flagsapi.com/FR/shiny/64.png",
   "picture" : "/driver-photos/Pierre.avif",
   "team": {
     "name":"Alpine",
@@ -84,6 +89,7 @@ const driversData = {
   "familyName": "Hamilton",
   "dateOfBirth": "1985-01-07",
   "nationality": "British",
+  "flag": "https://flagsapi.com/GB/shiny/64.png",
   "picture" : "/driver-photos/Lewis.avif",
   "team": {
     "name":"Mercedes",
@@ -99,6 +105,7 @@ const driversData = {
   "familyName": "Hülkenberg",
   "dateOfBirth": "1987-08-19",
   "nationality": "German",
+  "flag": "https://flagsapi.com/DE/shiny/64.png",
   "picture" : "/driver-photos/Nico.avif",
   "team": {
     "name":"Haas",
@@ -114,6 +121,8 @@ const driversData = {
   "familyName": "Leclerc",
   "dateOfBirth": "1997-10-16",
   "nationality": "Monegasque",
+  "flag": "https://flagsapi.com/MC/shiny/64.png",
+
   "picture" : "/driver-photos/Charles.avif",
   "team": {
     "name":"Ferrari",
@@ -129,6 +138,7 @@ const driversData = {
   "familyName": "Magnussen",
   "dateOfBirth": "1992-10-05",
   "nationality": "Danish",
+  "flag": "https://flagsapi.com/DK/shiny/64.png",
   "picture" : "/driver-photos/Kevin.avif",
   "team": {
     "name":"Haas",
@@ -144,6 +154,7 @@ const driversData = {
   "familyName": "Norris",
   "dateOfBirth": "1999-11-13",
   "nationality": "British",
+  "flag": "https://flagsapi.com/GB/shiny/64.png",
   "picture" : "/driver-photos/Lando.avif",
   "team": {
     "name":"Mclaren",
@@ -159,6 +170,7 @@ const driversData = {
   "familyName": "Ocon",
   "dateOfBirth": "1996-09-17",
   "nationality": "French",
+  "flag": "https://flagsapi.com/FR/shiny/64.png",
   "picture" : "/driver-photos/Esteban.avif",
   "team": {
     "name":"Alpine",
@@ -174,6 +186,7 @@ const driversData = {
   "familyName": "Pérez",
   "dateOfBirth": "1990-01-26",
   "nationality": "Mexican",
+  "flag": "https://flagsapi.com/MX/shiny/64.png",
   "picture" : "/driver-photos/Sergio.avif",
   "team": {
     "name":"Red Bull",
@@ -189,6 +202,7 @@ const driversData = {
   "familyName": "Piastri",
   "dateOfBirth": "2001-04-06",
   "nationality": "Australian",
+  "flag": "https://flagsapi.com/AU/shiny/64.png",
   "picture" : "/driver-photos/Oscar.avif",
   "team": {
     "name":"Mclaren",
@@ -204,6 +218,7 @@ const driversData = {
   "familyName": "Russell",
   "dateOfBirth": "1998-02-15",
   "nationality": "British",
+  "flag": "https://flagsapi.com/GB/shiny/64.png",
   "picture" : "/driver-photos/George.avif",
   "team": {
     "name":"Mercedes",
@@ -219,6 +234,7 @@ const driversData = {
   "familyName": "Sainz",
   "dateOfBirth": "1994-09-01",
   "nationality": "Spanish",
+  "flag": "https://flagsapi.com/ES/shiny/64.png",
   "picture" : "/driver-photos/Carlos.avif",
   "team": {
     "name":"Ferrari",
@@ -234,6 +250,7 @@ const driversData = {
   "familyName": "Sargeant",
   "dateOfBirth": "2000-12-31",
   "nationality": "American",
+  "flag": "https://flagsapi.com/US/shiny/64.png",
   "picture" : "/driver-photos/Logan.avif",
   "team": {
     "name":"Williams",
@@ -249,6 +266,7 @@ const driversData = {
   "familyName": "Stroll",
   "dateOfBirth": "1998-10-29",
   "nationality": "Canadian",
+  "flag": "https://flagsapi.com/CA/shiny/64.png",
   "picture" : "/driver-photos/Lance.avif",
   "team": {
     "name":"Aston Martin",
@@ -264,6 +282,7 @@ const driversData = {
   "familyName": "Tsunoda",
   "dateOfBirth": "2000-05-11",
   "nationality": "Japanese",
+  "flag": "https://flagsapi.com/JP/shiny/64.png",
   "picture" : "/driver-photos/Yuki.avif",
   "team": {
     "name":"Alpha Tauri",
@@ -279,6 +298,7 @@ const driversData = {
   "familyName": "Verstappen",
   "dateOfBirth": "1997-09-30",
   "nationality": "Dutch",
+  "flag": "https://flagsapi.com/NL/shiny/64.png",
   "picture" : "/driver-photos/Max.avif",
   "team": {
     "name":"Red Bull",
@@ -294,6 +314,7 @@ const driversData = {
   "familyName": "Zhou",
   "dateOfBirth": "1999-05-30",
   "nationality": "Chinese",
+  "flag": "https://flagsapi.com/CN/shiny/64.png",
   "picture" : "/driver-photos/Zhou.avif",
   "team": {
     "name": "Alfa Romeo",
