@@ -8,14 +8,27 @@ const DriverProfile = ({ driver }) => {
       sx={{
         minWidth: 300,
         backgroundColor: 'white',
-        paddingTop: 1.5,
+        paddingTop: 0.5,
         paddingRight: 1,
         paddingLeft: 1,
-        margin:'5px 5px 5px 5px'
+        margin: '5px 5px 5px 5px'
       }}
     >
       {driver && (
         <>
+          <Stack
+            direction={'row'}
+            justifyContent={'space-between'}
+            alignItems={'center'}
+            color="black"
+            sx={{ padding: 'auto' }}
+          >
+            <Typography variant="profile" fontSize={40}>1</Typography>
+            <Stack flexDirection={'row'} alignItems={'center'}>
+            <Typography variant="profile" fontSize={40}>69</Typography>
+            <Typography variant="profile" ml={1} fontSize={16}>Points</Typography>
+            </Stack>
+          </Stack>
           <Divider width={'90%'} />
           <Stack
             direction={'row'}
@@ -58,12 +71,14 @@ const DriverProfile = ({ driver }) => {
             alt={driver.code}
             sx={{ objectFit: 'scale-down', paddingLeft: '35px' }}
           />
-          <Box sx={{
-            position: 'absolute',
-            zIndex: '10',
-            paddingTop: '215px',
-            paddingLeft: '20px'
-          }}>
+          <Box
+            sx={{
+              position: 'absolute',
+              zIndex: '10',
+              paddingTop: '275px',
+              paddingLeft: '20px'
+            }}
+          >
             <Typography variant="profile" fontSize={55} color={`${team.color}`}>
               {permanentNumber}
             </Typography>

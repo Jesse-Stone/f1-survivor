@@ -3,10 +3,33 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { Box, Grid, Stack, Typography } from '@mui/material';
 import DriverProfile from './components/DriverProfile';
 import driversData from './data/driversData';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const queryClient = new QueryClient();
 
 function App() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get('https://ergast.com/api/f1/2023/results.json');
+      setData(response.data.MRData.RaceTable.Races);
+    };
+    fetchData();
+  }, []);
+
+  const groupedData = data.reduce((acc, race) => {
+    race.Results.forEach((result) => {
+      const driver = result.Driver.driverId;
+      if (!acc[driver]) {
+        acc[driver] = { driver, points: 0 };
+      }
+      acc[driver].points += parseInt(result.points);
+    });
+    return acc;
+  }, {});
+
+  const sortedData = Object.values(groupedData).sort((a, b) => b.points - a.points);
   return (
     <QueryClientProvider client={queryClient}>
       {/* <img src="/f1_favicon.png" alt="image" width="250" height="250" /> */}
@@ -16,11 +39,30 @@ function App() {
             PICK YOUR DRIVER
           </Typography>
         </Stack>
-        <Grid justifyContent="center">
+        <Grid justifyContent="center" container spacing={1}>
           {driversData.Drivers.map((driver) => (
             <DriverProfile key={driver.driverId} driver={driver} />
           ))}
         </Grid>
+        <div>
+      <h1>Results</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Driver</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedData.map((result) => (
+            <tr key={result.driver}>
+              <td>{result.driver}</td>
+              <td>{result.points}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
       </>
     </QueryClientProvider>
   );
