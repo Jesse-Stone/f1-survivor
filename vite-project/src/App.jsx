@@ -51,7 +51,7 @@ function App() {
             PICK YOUR DRIVER
           </Typography>
         </Stack>
-        <Grid justifyContent="center" container spacing={1} mb={5}>
+        <Grid justifyContent="center" container spacing={0} mb={5}>
           {driversData.Drivers.map((driver) => (
             <DriverProfile
               key={driver.driverId}

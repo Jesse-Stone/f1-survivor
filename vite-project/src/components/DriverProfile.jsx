@@ -13,7 +13,7 @@ const DriverProfile = ({ driver, points, position }) => {
         paddingTop: 0.5,
         paddingRight: 1,
         paddingLeft: 1,
-        margin: '5px 5px 5px 5px',
+        margin: '15px 15px 15px 15px',
         position: 'relative',
         '&:hover': {
           outlineColor: `${team.color}`,
