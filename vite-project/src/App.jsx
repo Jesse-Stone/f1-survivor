@@ -36,7 +36,7 @@ function App() {
     (a, b) => b.points - a.points
   );
 
-  const joinedObject = driversData.Drivers.map((item1) => ({
+  const joinedArray = driversData.Drivers.map((item1) => ({
     ...item1,
     ...sortedData.find((item2) => item2.driver === item1.driverId)
   }));
@@ -57,11 +57,11 @@ function App() {
               key={driver.driverId}
               driver={driver}
               points={
-                joinedObject.find(
+                joinedArray.find(
                   (result) => result.driverId === driver.driverId
                 ).points
               }
-              position ={2}
+              position ={sortedData.findIndex(obj => obj.driver === driver.driverId) + 1}
             />
           ))}
         </Grid>

@@ -7,7 +7,6 @@ const DriverProfile = ({ driver, points, position }) => {
   return (
     <Stack id="profile-card"
       sx={{
- 
         boxSizing: 'border-box',
         minWidth: 225,
         backgroundColor: 'white',
@@ -32,14 +31,14 @@ const DriverProfile = ({ driver, points, position }) => {
             color="black"
             sx={{ padding: 'auto' }}
           >
-            <Typography variant="profile" fontSize={48}>
+            <Typography variant="profile2" fontSize={40} fontWeight={900}>
               {position}
             </Typography>
             <Stack flexDirection={'row'} alignItems={'center'}>
-              <Typography variant="profile2" fontSize={30} fontWeight={'bold'}>
+              <Typography variant="profile2" fontSize={30} fontWeight={400}>
               {points}
               </Typography>
-              <Typography variant="profile2" ml={1} fontSize={12}>
+              <Typography variant="profile2" ml={1} fontSize={12} fontWeight={400}>
                 PTS
               </Typography>
             </Stack>

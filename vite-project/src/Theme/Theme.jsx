@@ -12,6 +12,10 @@ const theme = createTheme({
     profile2: {
       fontSize: 28,
       fontFamily: ['Titillium Web', 'sans-serif'].join(',')
+    },
+    profile3: {
+      fontSize: 28,
+      fontFamily: ['Bebas Neue', 'cursive'].join(',')
     }
   }
 });
