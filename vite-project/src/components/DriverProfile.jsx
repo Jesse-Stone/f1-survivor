@@ -30,14 +30,14 @@ const DriverProfile = ({ driver, points, position }) => {
       }}
     >
       <Box
-        sx={{
-          // outlineColor: `${team.color}`,
-          // outlineWidth: '2px',
-          // outlineStyle: 'solid',
-          zIndex: '0',
-        }}
+        // sx={{backgroundColor: 'rgba(192,192,192,0.3)',
+        // height:'50%',
+        //   // outlineColor: `${team.color}`,
+        //   // outlineWidth: '2px',
+        //   // outlineStyle: 'solid',
+        //   zIndex: '0',
+        // }}
       >
-        {/* <Box> */}
         {driver && (
           <>
             <Stack
@@ -110,7 +110,7 @@ const DriverProfile = ({ driver, points, position }) => {
             <Typography variant="profile2" color="text.secondary" fontSize={14}>
               {team.name}
             </Typography>
-            <Stack flexDirection={'row'}>
+            <Stack>
               <Box
                 component={'img'}
                 src={`${
@@ -120,7 +120,7 @@ const DriverProfile = ({ driver, points, position }) => {
                 }`}
                 sx={{
                   height: '150px',
-                  paddingLeft: '70px',
+                  paddingLeft: '60px',
                   zIndex:'2'
                   // backgroundImage: `url(${trophy})`,
                   // backgroundSize: 'contain',
@@ -131,14 +131,13 @@ const DriverProfile = ({ driver, points, position }) => {
             <Box
               sx={{
                 position: 'absolute',
-                zIndex: '10',
                 bottom: '0',
-                marginBottom: '-15px' //fix this shit
+                marginBottom: '-20px' //fix this shit
               }}
             >
               <Typography
                 variant="profile"
-                fontSize={55}
+                fontSize={70}
                 color={`${team.color}`}
               >
                 {permanentNumber}
