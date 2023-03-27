@@ -1,11 +1,13 @@
 import { Stack, Divider, CardMedia, Typography, Box } from '@mui/material';
 import driversData from '../data/driversData';
+import toOrdinalSuffix from '../utils/utils';
 
 const DriverProfile = ({ driver, points, position }) => {
   const { givenName, familyName, flag, permanentNumber, team } = driver;
 
   return (
-    <Stack id="profile-card"
+    <Stack
+      id="profile-card"
       sx={{
         boxSizing: 'border-box',
         minWidth: 250,
@@ -18,8 +20,8 @@ const DriverProfile = ({ driver, points, position }) => {
         '&:hover': {
           outlineColor: `${team.color}`,
           outlineWidth: '7px',
-          outlineStyle: 'solid',          
-        },
+          outlineStyle: 'solid'
+        }
       }}
     >
       {driver && (
@@ -31,14 +33,24 @@ const DriverProfile = ({ driver, points, position }) => {
             color="black"
             sx={{ padding: 'auto' }}
           >
-            <Typography variant="profile2" fontSize={40} fontWeight={900}>
+            <Stack flexDirection={'row'}>
+            <Typography variant="profile1" fontSize={40} fontWeight={900}>
               {position}
             </Typography>
+            <Typography variant="profile2" fontSize={22} fontWeight={400} mt={1}>
+              {toOrdinalSuffix(position)}
+            </Typography>
+            </Stack>
             <Stack flexDirection={'row'} alignItems={'center'}>
               <Typography variant="profile2" fontSize={30} fontWeight={400}>
-              {points}
+                {points}
               </Typography>
-              <Typography variant="profile2" ml={1} fontSize={12} fontWeight={400}>
+              <Typography
+                variant="profile2"
+                ml={1}
+                fontSize={12}
+                fontWeight={400}
+              >
                 PTS
               </Typography>
             </Stack>
@@ -60,7 +72,12 @@ const DriverProfile = ({ driver, points, position }) => {
                 }}
               ></Box>
               <Stack marginLeft={1}>
-                <Typography variant="profile2" fontSize={14} fontWeight={100} mb={-1}>
+                <Typography
+                  variant="profile2"
+                  fontSize={14}
+                  fontWeight={100}
+                  mb={-1}
+                >
                   {`${givenName}`}
                 </Typography>
                 <Typography variant="profile" fontSize={22}>
