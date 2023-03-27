@@ -28,7 +28,7 @@ function Navbar() {
 
   return (
       <Stack id="navbar" sx= {{
-        margin: '25px',
+        margin: '30px',
         '@media (min-width:800px)': {
           backgroundColor: 'blue',
           margin: '0px'
