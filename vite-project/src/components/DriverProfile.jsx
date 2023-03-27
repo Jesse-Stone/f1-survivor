@@ -8,12 +8,12 @@ const DriverProfile = ({ driver, points, position }) => {
     <Stack id="profile-card"
       sx={{
         boxSizing: 'border-box',
-        minWidth: 225,
+        minWidth: 250,
         backgroundColor: 'white',
         paddingTop: 0.5,
         paddingRight: 1,
         paddingLeft: 1,
-        margin: '15px 15px 15px 15px',
+        margin: '12px 12px 12px 12px',
         position: 'relative',
         '&:hover': {
           outlineColor: `${team.color}`,
