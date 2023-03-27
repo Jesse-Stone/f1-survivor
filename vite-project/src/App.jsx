@@ -47,7 +47,7 @@ function App() {
       <>
         {console.log(sortedData)}
         <Stack justifyContent={'center'} flexDirection={'row'}>
-          <Typography variant="profile" mb={5} fontSize={40}>
+          <Typography variant="profile" fontSize={50}>
             PICK YOUR DRIVER
           </Typography>
         </Stack>
