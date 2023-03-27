@@ -10,6 +10,7 @@ const DriverProfile = ({ driver, points, position }) => {
       id="profile-card"
       sx={{
         boxSizing: 'border-box',
+        transition: 'all .2s ease-in-out',
         maxWidth: 250,
         backgroundColor: 'white',
         paddingTop: 0.5,
@@ -21,7 +22,8 @@ const DriverProfile = ({ driver, points, position }) => {
         '&:hover': {
           outlineColor: `${team.color}`,
           outlineWidth: '7px',
-          outlineStyle: 'solid'
+          outlineStyle: 'solid',
+          transform: 'scale(1.05)'
         }
       }}
     >
