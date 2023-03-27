@@ -1,42 +1,11 @@
 import { Stack, Divider, CardMedia, Typography, Box } from '@mui/material';
-import { useEffect, useState } from 'react';
 import driversData from '../data/driversData';
-import axios from 'axios';
 
-const DriverProfile = ({ driver, points }) => {
+const DriverProfile = ({ driver, points, position }) => {
   const { givenName, familyName, flag, permanentNumber, team } = driver;
 
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(
-        'https://ergast.com/api/f1/2023/results.json'
-      );
-      setData(response.data.MRData.RaceTable.Races);
-    };
-    fetchData();
-  }, []);
-
-  const groupedData = data.reduce((acc, race) => {
-    race.Results.forEach((result) => {
-      const driver = result.Driver.driverId;
-      if (!acc[driver]) {
-        acc[driver] = { driver, points: 0 };
-      }
-      acc[driver].points += parseInt(result.points);
-    });
-    return acc;
-  }, {});
-
-  const sortedData = Object.values(groupedData).sort(
-    (a, b) => b.points - a.points
-  );
-
-
-
   return (
-    <Stack
+    <Stack id="profile-card"
       sx={{
         minWidth: 225,
         backgroundColor: 'white',
@@ -44,7 +13,14 @@ const DriverProfile = ({ driver, points }) => {
         paddingRight: 1,
         paddingLeft: 1,
         margin: '5px 5px 5px 5px',
-        position: 'relative'
+        position: 'relative',
+        '&:hover': {
+          borderColor: `${team.color}`,
+          borderWidth: '7px',
+          borderStyle: 'solid',
+        },
+
+
       }}
     >
       {driver && (
@@ -57,7 +33,7 @@ const DriverProfile = ({ driver, points }) => {
             sx={{ padding: 'auto' }}
           >
             <Typography variant="profile" fontSize={48}>
-              1
+              {position}
             </Typography>
             <Stack flexDirection={'row'} alignItems={'center'}>
               <Typography variant="profile2" fontSize={30} fontWeight={'bold'}>
@@ -85,7 +61,7 @@ const DriverProfile = ({ driver, points }) => {
                 }}
               ></Box>
               <Stack marginLeft={1}>
-                <Typography variant="profile2" fontSize={14} fontWeight={100}>
+                <Typography variant="profile2" fontSize={14} fontWeight={100} mb={-1}>
                   {`${givenName}`}
                 </Typography>
                 <Typography variant="profile" fontSize={22}>
@@ -114,7 +90,8 @@ const DriverProfile = ({ driver, points }) => {
             sx={{
               position: 'absolute',
               zIndex: '10',
-              bottom: '0'
+              bottom: '0',
+              marginBottom: '-15px' //fix this shit
             }}
           >
             <Typography variant="profile" fontSize={55} color={`${team.color}`}>
