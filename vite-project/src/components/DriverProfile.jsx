@@ -7,6 +7,8 @@ const DriverProfile = ({ driver, points, position }) => {
   return (
     <Stack id="profile-card"
       sx={{
+ 
+        boxSizing: 'border-box',
         minWidth: 225,
         backgroundColor: 'white',
         paddingTop: 0.5,
@@ -15,12 +17,10 @@ const DriverProfile = ({ driver, points, position }) => {
         margin: '5px 5px 5px 5px',
         position: 'relative',
         '&:hover': {
-          borderColor: `${team.color}`,
-          borderWidth: '7px',
-          borderStyle: 'solid',
+          outlineColor: `${team.color}`,
+          outlineWidth: '7px',
+          outlineStyle: 'solid',          
         },
-
-
       }}
     >
       {driver && (
