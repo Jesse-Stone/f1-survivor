@@ -5,6 +5,7 @@ import DriverProfile from './components/DriverProfile';
 import driversData from './data/driversData';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Navbar from './components/NavBar';
 
 const queryClient = new QueryClient();
 
@@ -43,8 +44,8 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* <img src="/f1_favicon.png" alt="image" width="250" height="250" /> */}
       <>
+      {/* <Navbar/> */}
         {console.log(sortedData)}
         <Stack justifyContent={'center'} flexDirection={'row'}>
           <Typography variant="profile" fontSize={50}>
