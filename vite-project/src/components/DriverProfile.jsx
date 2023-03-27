@@ -10,7 +10,7 @@ const DriverProfile = ({ driver, points, position }) => {
       id="profile-card"
       sx={{
         boxSizing: 'border-box',
-        minWidth: 250,
+        maxWidth: 250,
         backgroundColor: 'white',
         paddingTop: 0.5,
         paddingRight: 1,
@@ -96,7 +96,7 @@ const DriverProfile = ({ driver, points, position }) => {
               driversData.Drivers.find(
                 (drivers) => drivers.givenName === `${driver.givenName}`
               ).picture
-            }`} sx= {{height:'150px', paddingLeft: '80px'}}>
+            }`} sx= {{height:'150px', paddingLeft: '70px'}}>
 
             </Box>
           </Stack>
