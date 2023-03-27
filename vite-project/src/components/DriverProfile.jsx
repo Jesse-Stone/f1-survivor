@@ -91,7 +91,16 @@ const DriverProfile = ({ driver, points, position }) => {
           <Typography variant="profile2" color="text.secondary" fontSize={14}>
             {team.name}
           </Typography>
-          <CardMedia
+          <Stack flexDirection={'row'}>
+            <Box component={'img'} src={`${
+              driversData.Drivers.find(
+                (drivers) => drivers.givenName === `${driver.givenName}`
+              ).picture
+            }`} sx= {{height:'150px', paddingLeft: '80px'}}>
+
+            </Box>
+          </Stack>
+          {/* <CardMedia
             component="img"
             height="150"
             image={`${
@@ -101,7 +110,7 @@ const DriverProfile = ({ driver, points, position }) => {
             }`}
             alt={driver.code}
             sx={{ objectFit: 'scale-down', paddingLeft: '40px' }}
-          />
+          /> */}
           <Box
             sx={{
               position: 'absolute',
