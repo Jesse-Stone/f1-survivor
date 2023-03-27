@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 import driversData from '../data/driversData';
 import axios from 'axios';
 
-const DriverProfile = ({ driver }) => {
+const DriverProfile = ({ driver, points }) => {
   const { givenName, familyName, flag, permanentNumber, team } = driver;
 
   const [data, setData] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
@@ -15,7 +16,7 @@ const DriverProfile = ({ driver }) => {
       setData(response.data.MRData.RaceTable.Races);
     };
     fetchData();
-  }, {});
+  }, []);
 
   const groupedData = data.reduce((acc, race) => {
     race.Results.forEach((result) => {
@@ -31,10 +32,13 @@ const DriverProfile = ({ driver }) => {
   const sortedData = Object.values(groupedData).sort(
     (a, b) => b.points - a.points
   );
+
+
+
   return (
     <Stack
       sx={{
-        minWidth: 300,
+        minWidth: 225,
         backgroundColor: 'white',
         paddingTop: 0.5,
         paddingRight: 1,
@@ -57,8 +61,7 @@ const DriverProfile = ({ driver }) => {
             </Typography>
             <Stack flexDirection={'row'} alignItems={'center'}>
               <Typography variant="profile2" fontSize={30} fontWeight={'bold'}>
-              {groupedData ? groupedData?.drivers?.find((drivers) => drivers.driver === driver.driverId ).points : 0}
-              {console.log(groupedData)}
+              {points}
               </Typography>
               <Typography variant="profile2" ml={1} fontSize={12}>
                 PTS
@@ -98,7 +101,7 @@ const DriverProfile = ({ driver }) => {
           </Typography>
           <CardMedia
             component="img"
-            height="200"
+            height="150"
             image={`${
               driversData.Drivers.find(
                 (drivers) => drivers.givenName === `${driver.givenName}`
