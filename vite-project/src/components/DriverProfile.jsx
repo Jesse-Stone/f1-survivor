@@ -1,7 +1,7 @@
-import { Stack, Divider, Typography, Box } from '@mui/material';
+import { Stack, Divider, Typography, Box, Dialog } from '@mui/material';
 import driversData from '../data/driversData';
 import toOrdinalSuffix from '../utils/utils';
-import trophy from '../assets/trophy.png';
+import { useState } from 'react';
 
 const DriverProfile = ({ driver, points, position }) => {
   const { givenName, familyName, flag, permanentNumber, team } = driver;
@@ -9,12 +9,12 @@ const DriverProfile = ({ driver, points, position }) => {
   return (
     <Stack
       id="profile-card"
+      // onClick={handleClick} // not in use
       sx={{
         boxSizing: 'border-box',
         transition: 'all .2s ease-in-out',
-        // maxWidth: 250,
+        maxWidth: 250,
         backgroundColor: 'white',
-        // paddingTop: 0.5,
         paddingRight: 1,
         paddingLeft: 1,
         margin: '12px 12px 12px 12px',
@@ -29,15 +29,6 @@ const DriverProfile = ({ driver, points, position }) => {
         }
       }}
     >
-      <Box
-        // sx={{backgroundColor: 'rgba(192,192,192,0.3)',
-        // height:'50%',
-        //   // outlineColor: `${team.color}`,
-        //   // outlineWidth: '2px',
-        //   // outlineStyle: 'solid',
-        //   zIndex: '0',
-        // }}
-      >
         {driver && (
           <>
             <Stack
@@ -122,9 +113,6 @@ const DriverProfile = ({ driver, points, position }) => {
                   height: '150px',
                   paddingLeft: '60px',
                   zIndex:'2'
-                  // backgroundImage: `url(${trophy})`,
-                  // backgroundSize: 'contain',
-                  // backgroundRepeat: 'no-repeat'
                 }}
               ></Box>
             </Stack>
@@ -145,7 +133,6 @@ const DriverProfile = ({ driver, points, position }) => {
             </Box>
           </>
         )}
-      </Box>
     </Stack>
   );
 };

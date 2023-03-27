@@ -1,6 +1,6 @@
 // import './App.css'
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { Grid, Stack, Typography } from '@mui/material';
+import { Grid, Stack, Box, Typography } from '@mui/material';
 import DriverProfile from './components/DriverProfile';
 import driversData from './data/driversData';
 import React, { useEffect, useState } from 'react';
@@ -46,14 +46,14 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <>
-      {/* <Navbar/> */}
+      <Navbar/>
         {console.log(sortedData)}
         <Stack justifyContent={'center'} flexDirection={'row'}>
           <Typography variant="profile" fontSize={50}>
             PICK YOUR DRIVER
           </Typography>
         </Stack>
-        <Grid justifyContent="center" container spacing={0} mb={5}>
+        <Grid  justifyContent={'center'} container spacing={0}>
           {driversData.Drivers.map((driver) => (
             <DriverProfile
               key={driver.driverId}
