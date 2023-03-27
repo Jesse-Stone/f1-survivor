@@ -51,19 +51,31 @@ function Navbar() {
               <ListItemIcon>
                 <MenuIcon />
               </ListItemIcon>
-              <ListItemText primary="Menu Item 1" />
+              <ListItemText primary="Home" />
             </ListItem>
             <ListItem button onClick={handleDrawerClose}>
               <ListItemIcon>
                 <MenuIcon />
               </ListItemIcon>
-              <ListItemText primary="Menu Item 2" />
+              <ListItemText primary="Make a Pick" />
             </ListItem>
             <ListItem button onClick={handleDrawerClose}>
               <ListItemIcon>
                 <MenuIcon />
               </ListItemIcon>
-              <ListItemText primary="Menu Item 3" />
+              <ListItemText primary="My Picks" />
+            </ListItem>
+            <ListItem button onClick={handleDrawerClose}>
+              <ListItemIcon>
+                <MenuIcon />
+              </ListItemIcon>
+              <ListItemText primary="Standings" />
+            </ListItem>
+            <ListItem button onClick={handleDrawerClose}>
+              <ListItemIcon>
+                <MenuIcon />
+              </ListItemIcon>
+              <ListItemText primary="Logout" />
             </ListItem>
           </List>
         </Drawer>
