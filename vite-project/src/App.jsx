@@ -47,13 +47,12 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <>
       <Navbar/>
-        {console.log(sortedData)}
         <Stack justifyContent={'center'} flexDirection={'row'}>
           <Typography variant="profile" fontSize={50}>
             PICK YOUR DRIVER
           </Typography>
         </Stack>
-        <Grid  justifyContent={'center'} container spacing={0}>
+        <Grid  justifyContent={'center'} container spacing={0} mb={10}>
           {driversData.Drivers.map((driver) => (
             <DriverProfile
               key={driver.driverId}

@@ -24,8 +24,16 @@ function Navbar() {
     setOpenDrawer(false);
   };
 
+  
+
   return (
-      <Stack>
+      <Stack id="navbar" sx= {{
+        margin: '25px',
+        '@media (min-width:800px)': {
+          backgroundColor: 'blue',
+          margin: '0px'
+        }
+      }}>
         <AppBar position="fixed" color="transparent" elevation={0}>
           <Toolbar>
             <IconButton
