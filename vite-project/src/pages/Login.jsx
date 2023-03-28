@@ -29,7 +29,7 @@ const Login = () => {
         >
           FORMULA 1 // SURVIVOR
         </Typography>
-        <Button onClick = {signInWithGoogle}>
+        <Button variant="contained" color="primary" onClick = {signInWithGoogle}>
           LOGIN
         </Button>
       </Stack>
