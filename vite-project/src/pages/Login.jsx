@@ -9,6 +9,7 @@ const Login = () => {
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleAuthProvider)
+      localStorage.setItem("isAuthenticated", "true");
       navigate('/makepicks')
     }catch (err) {
       console.log(err)
