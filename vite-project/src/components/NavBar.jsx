@@ -30,12 +30,12 @@ const NavBar = () => {
   return (
     <Stack
       id="navbar"
-      sx={{
-        margin: '50px',
-        '@media (min-width:550px)': {
-          margin: '0px'
-        },
-      }}
+      // sx={{
+      //   margin: '50px',
+      //   '@media (min-width:550px)': {
+      //     margin: '0px'
+      //   },
+      // }}
     >
       <AppBar position="fixed" color="transparent" elevation={0}>
         <Toolbar>

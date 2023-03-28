@@ -41,7 +41,11 @@ const DriverPicker = () => {
   return (
       <>
         <Stack justifyContent={'center'} flexDirection={'row'}>
-          <Typography variant="profile" fontSize={50} mt={3}>
+          <Typography variant="profile" fontSize={30} mt={3} sx = {{ '@media (min-width:550px)': {
+            fontSize: '60px'
+          },
+
+          }}>
             PICK YOUR DRIVER
           </Typography>
         </Stack>
