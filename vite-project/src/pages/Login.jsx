@@ -1,15 +1,20 @@
 import { Box, Stack, Typography, Button } from '@mui/material';
 import {signInWithPopup } from 'firebase/auth'
 import {auth, googleAuthProvider} from '../config/firebase'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+  const navigate= useNavigate();
 
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleAuthProvider)
+      navigate('/makepicks')
     }catch (err) {
       console.log(err)
     }
+    
+
   }
   return (
     <>
