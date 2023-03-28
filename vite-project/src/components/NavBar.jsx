@@ -14,11 +14,8 @@ import { auth } from '../config/firebase';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom'
 
-
-
 const NavBar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
-  const navigate= useNavigate();
 
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
