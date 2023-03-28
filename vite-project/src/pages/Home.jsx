@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 
 const Home = () => {
   return (
@@ -18,7 +18,7 @@ const Home = () => {
             }
           }}
         >
-          FORMULA 1 // SURVIVOR
+          HOME
         </Typography>
       </Stack>
     </>

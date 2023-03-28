@@ -67,7 +67,7 @@ const NavBar = () => {
         }}
       >
         <Stack height={'30%'} mt={5} justifyContent={'space-between'} alignItems={'center'}>
-            <LinkStyled to={'/'} onClick={handleDrawerClose}>Home</LinkStyled>
+            <LinkStyled to={'/home'} onClick={handleDrawerClose}>Home</LinkStyled>
             <LinkStyled to={'/makepicks'} onClick={handleDrawerClose}>Make Picks</LinkStyled>
             <LinkStyled to={'/standings'} onClick={handleDrawerClose}>Standings</LinkStyled>
             <LinkStyled to={'/'} onClick={handleSignout}>Logout</LinkStyled>

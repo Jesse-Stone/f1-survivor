@@ -23,6 +23,7 @@ const App = () => {
           <Route path="/" Component={Login} exact></Route>
           {user && (
             <>
+              <Route path="/home" Component={Home} exact></Route>
               <Route path="/standings" Component={Standings} exact></Route>
               <Route path="/makepicks" Component={DriverPicker} exact></Route>
             </>
