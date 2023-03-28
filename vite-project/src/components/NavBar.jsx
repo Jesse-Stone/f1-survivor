@@ -10,9 +10,15 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import {styled} from '@mui/system'
+import { auth } from '../config/firebase';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom'
+
+
 
 const NavBar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const navigate= useNavigate();
 
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
@@ -21,6 +27,10 @@ const NavBar = () => {
   const handleDrawerClose = () => {
     setOpenDrawer(false);
   };
+
+  const handleSignout = () => {
+    signOut(auth)
+  }
 
   const LinkStyled = styled(Link)({
     fontFamily:'f1',
@@ -63,7 +73,7 @@ const NavBar = () => {
             <LinkStyled to={'/'} onClick={handleDrawerClose}>Home</LinkStyled>
             <LinkStyled to={'/makepicks'} onClick={handleDrawerClose}>Make Picks</LinkStyled>
             <LinkStyled to={'/standings'} onClick={handleDrawerClose}>Standings</LinkStyled>
-            <LinkStyled to={'/logout'} onClick={handleDrawerClose}>Logout</LinkStyled>
+            <LinkStyled to={'/'} onClick={handleSignout}>Logout</LinkStyled>
         </Stack>
       </Drawer>
     </Stack>
