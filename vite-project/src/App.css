@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: f1_bold;
-  src: url(../src/assets/fonts/Formula1-Bold.ttf);
+  src: url(../public/Formula1-Bold.ttf);
 }
 
 .f1 {
