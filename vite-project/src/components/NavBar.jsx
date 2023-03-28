@@ -5,13 +5,10 @@ import {
   Toolbar,
   Typography,
   Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Stack
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -24,62 +21,52 @@ function Navbar() {
     setOpenDrawer(false);
   };
 
-  
-
   return (
-      <Stack id="navbar" sx= {{
+    <Stack
+      id="navbar"
+      sx={{
         margin: '50px',
         '@media (min-width:550px)': {
           margin: '0px'
         }
-      }}>
-        <AppBar position="fixed" color="transparent" elevation={0}>
-          <Toolbar>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={handleDrawerOpen}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-        <Drawer anchor="left" open={openDrawer} onClose={handleDrawerClose}>
-          <List>
-            <ListItem button onClick={handleDrawerClose}>
-              <ListItemIcon>
-                <MenuIcon />
-              </ListItemIcon>
-              <ListItemText primary="Home" />
-            </ListItem>
-            <ListItem button onClick={handleDrawerClose}>
-              <ListItemIcon>
-                <MenuIcon />
-              </ListItemIcon>
-              <ListItemText primary="Make a Pick" />
-            </ListItem>
-            <ListItem button onClick={handleDrawerClose}>
-              <ListItemIcon>
-                <MenuIcon />
-              </ListItemIcon>
-              <ListItemText primary="My Picks" />
-            </ListItem>
-            <ListItem button onClick={handleDrawerClose}>
-              <ListItemIcon>
-                <MenuIcon />
-              </ListItemIcon>
-              <ListItemText primary="Standings" />
-            </ListItem>
-            <ListItem button onClick={handleDrawerClose}>
-              <ListItemIcon>
-                <MenuIcon />
-              </ListItemIcon>
-              <ListItemText primary="Logout" />
-            </ListItem>
-          </List>
-        </Drawer>
-      </Stack>
+      }}
+    >
+      <AppBar position="fixed" color="transparent" elevation={0}>
+        <Toolbar>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={handleDrawerOpen}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        anchor="left"
+        open={openDrawer}
+        onClose={handleDrawerClose}
+        PaperProps={{
+          sx: { width: '10%' }
+        }}
+      >
+        <Stack>
+          <Typography>
+            <Link to={'/'} onClick={handleDrawerClose}>Home</Link>
+          </Typography>
+          <Typography>
+            <Link to={'/makepicks'} onClick={handleDrawerClose}>Make Picks</Link>
+          </Typography>
+          <Typography>
+            <Link to={'/standing'} onClick={handleDrawerClose}>Standings</Link>
+          </Typography>
+          <Typography>
+            <Link to={'/logout'} onClick={handleDrawerClose}>Logout</Link>
+          </Typography>
+        </Stack>
+      </Drawer>
+    </Stack>
   );
 }
 

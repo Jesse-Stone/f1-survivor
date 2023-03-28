@@ -25,6 +25,9 @@ const theme = createTheme({
       fontSize: 28,
       fontFamily:['f1_bold']
     },
+  },
+  listItemText:{
+    fontSize:'2.7em',//Insert your required size
   }
 });
 
