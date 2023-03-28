@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
+import {styled} from '@mui/system'
 
 function NavBar() {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -21,6 +22,11 @@ function NavBar() {
     setOpenDrawer(false);
   };
 
+  const LinkStyled = styled(Link)({
+    fontFamily:'f1',
+    color: 'white',
+  })
+
   return (
     <Stack
       id="navbar"
@@ -29,7 +35,6 @@ function NavBar() {
         '@media (min-width:550px)': {
           margin: '0px'
         },
-        borderRadius:'8px'
       }}
     >
       <AppBar position="fixed" color="transparent" elevation={0}>
@@ -49,22 +54,14 @@ function NavBar() {
         open={openDrawer}
         onClose={handleDrawerClose}
         PaperProps={{
-          sx: { width: '10%' }
+          sx: { width: '10%',  background: 'rgba(0,0,0,.8)' }
         }}
       >
         <Stack height={'25%'} mt={3} justifyContent={'space-between'} alignItems={'center'}>
-          <Typography>
-            <Link to={'/'} onClick={handleDrawerClose}>Home</Link>
-          </Typography>
-          <Typography>
-            <Link to={'/makepicks'} onClick={handleDrawerClose}>Make Picks</Link>
-          </Typography>
-          <Typography>
-            <Link to={'/standing'} onClick={handleDrawerClose}>Standings</Link>
-          </Typography>
-          <Typography>
-            <Link to={'/logout'} onClick={handleDrawerClose}>Logout</Link>
-          </Typography>
+            <LinkStyled to={'/'} onClick={handleDrawerClose}>Home</LinkStyled>
+            <LinkStyled to={'/makepicks'} onClick={handleDrawerClose}>Make Picks</LinkStyled>
+            <LinkStyled to={'/standing'} onClick={handleDrawerClose}>Standings</LinkStyled>
+            <LinkStyled to={'/logout'} onClick={handleDrawerClose}>Logout</LinkStyled>
         </Stack>
       </Drawer>
     </Stack>
