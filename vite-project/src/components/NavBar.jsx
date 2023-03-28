@@ -54,7 +54,9 @@ function NavBar() {
         open={openDrawer}
         onClose={handleDrawerClose}
         PaperProps={{
-          sx: { width: '10%',  background: 'rgba(0,0,0,.8)' }
+          sx: { width: '50%', '@media (min-width:550px)': {
+            width: '200px'
+          },  background: 'rgba(0,0,0,.8)' }
         }}
       >
         <Stack height={'25%'} mt={3} justifyContent={'space-between'} alignItems={'center'}>
