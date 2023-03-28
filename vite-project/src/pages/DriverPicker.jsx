@@ -44,7 +44,7 @@ function DriverPicker() {
       <Navbar/>
         <Stack justifyContent={'center'} flexDirection={'row'}>
           <Typography variant="profile" fontSize={50}>
-            PICK YOUR DRIVER
+            POOP YOUR DRIVER
           </Typography>
         </Stack>
         <Grid  justifyContent={'center'} container spacing={0} mb={10}>

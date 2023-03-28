@@ -28,7 +28,8 @@ function Navbar() {
         margin: '50px',
         '@media (min-width:550px)': {
           margin: '0px'
-        }
+        },
+        borderRadius:'8px'
       }}
     >
       <AppBar position="fixed" color="transparent" elevation={0}>
@@ -51,7 +52,7 @@ function Navbar() {
           sx: { width: '10%' }
         }}
       >
-        <Stack>
+        <Stack height={'25%'} mt={3} justifyContent={'space-between'} alignItems={'center'}>
           <Typography>
             <Link to={'/'} onClick={handleDrawerClose}>Home</Link>
           </Typography>
