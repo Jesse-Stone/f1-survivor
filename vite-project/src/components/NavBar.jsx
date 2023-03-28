@@ -59,10 +59,10 @@ function NavBar() {
           },  background: 'rgba(0,0,0,.8)' }
         }}
       >
-        <Stack height={'25%'} mt={3} justifyContent={'space-between'} alignItems={'center'}>
+        <Stack height={'30%'} mt={5} justifyContent={'space-between'} alignItems={'center'}>
             <LinkStyled to={'/'} onClick={handleDrawerClose}>Home</LinkStyled>
             <LinkStyled to={'/makepicks'} onClick={handleDrawerClose}>Make Picks</LinkStyled>
-            <LinkStyled to={'/standing'} onClick={handleDrawerClose}>Standings</LinkStyled>
+            <LinkStyled to={'/standings'} onClick={handleDrawerClose}>Standings</LinkStyled>
             <LinkStyled to={'/logout'} onClick={handleDrawerClose}>Logout</LinkStyled>
         </Stack>
       </Drawer>
