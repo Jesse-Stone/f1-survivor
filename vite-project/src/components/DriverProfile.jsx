@@ -83,14 +83,14 @@ const DriverProfile = ({ driver, points, position }) => {
                 ></Box>
                 <Stack marginLeft={1}>
                   <Typography
-                    variant="profile2"
-                    fontSize={14}
+                    variant="f1"
+                    fontSize={12}
                     fontWeight={100}
                     mb={-1}
                   >
                     {`${givenName}`}
                   </Typography>
-                  <Typography variant="profile" fontSize={22}>
+                  <Typography variant="f1bold" fontSize={16}>
                     {`${familyName}`.toUpperCase()}
                   </Typography>
                 </Stack>

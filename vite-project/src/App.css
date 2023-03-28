@@ -1,17 +1,17 @@
-/* @font-face {
+@font-face {
   font-family: f1;
   src: url(../src/assets/fonts/Formula1-Regular.ttf);
 }
 
 @font-face {
-  font-family: f1_bold;
-  src: url(../public/Formula1-Bold.ttf);
+  font-family: f1bold;
+  src: url(../src/assets/fonts/Formula1-Bold.ttf);
 }
 
 .f1 {
   font-family: f1;
 }
 
-.f1_bold {
-  font-family: f1_bold;
-} */
+.f1bold {
+  font-family: f1bold;
+}

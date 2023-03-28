@@ -17,14 +17,14 @@ const theme = createTheme({
       fontSize: 28,
       fontFamily: ['Bebas Neue', 'cursive'].join(',')
     },
-    // f1: {
-    //   fontSize: 28,
-    //   fontFamily:['f1']
-    // },
-    // f1_bold: {
-    //   fontSize: 28,
-    //   fontFamily:['f1_bold']
-    // },
+    f1: {
+      fontSize: 28,
+      fontFamily:['f1']
+    },
+    f1bold: {
+      fontSize: 28,
+      fontFamily:['f1bold']
+    },
   },
 });
 
