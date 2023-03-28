@@ -1,7 +1,7 @@
 import './App.css'
 import { QueryClient, QueryClientProvider } from 'react-query';
 import React from 'react';
-import Navbar from './components/Navbar';
+import NavBar from './components/NavBar';
 import DriverPicker from './pages/DriverPicker';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
@@ -12,7 +12,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-      <Navbar/>
+      <NavBar/>
       <Routes>
         <Route path='/' Component={DriverPicker} exact></Route>
       </Routes>
