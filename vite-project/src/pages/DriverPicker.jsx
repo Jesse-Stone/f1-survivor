@@ -49,7 +49,7 @@ const DriverPicker = () => {
             PICK YOUR DRIVER
           </Typography>
         </Stack>
-        <Grid  justifyContent={'center'} container spacing={0} mb={10}>
+        <Grid  justifyContent={'center'} container spacing={0} mb={0}>
           {driversData.Drivers.map((driver) => (
             <DriverProfile
               key={driver.driverId}

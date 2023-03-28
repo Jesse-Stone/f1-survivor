@@ -8,13 +8,18 @@ const Home = () => {
         justifyContent={'center'}
         alignItems={'center'}
       >
-                  <Typography variant="profile" fontSize={30} mt={3} sx = {{ '@media (min-width:550px)': {
-            fontSize: '60px'
-          },
-
-          }}>
-            FORMULA 1  // SURVIVOR
-          </Typography>
+        <Typography
+          variant="profile"
+          fontSize={30}
+          mt={3}
+          sx={{
+            '@media (min-width:550px)': {
+              fontSize: '60px'
+            }
+          }}
+        >
+          FORMULA 1 // SURVIVOR
+        </Typography>
       </Stack>
     </>
   );
