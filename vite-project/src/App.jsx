@@ -3,19 +3,25 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import React from 'react';
 import NavBar from './components/NavBar';
 import DriverPicker from './pages/DriverPicker';
+import Home from './pages/Home';
+import Standings from './pages/Standings';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 const queryClient = new QueryClient();
 
-function App() {
+const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
       <NavBar/>
+      <>
       <Routes>
-        <Route path='/' Component={DriverPicker} exact></Route>
+        <Route path='/' Component={Home} exact></Route>
+        <Route path='/standings' Component={Standings} exact></Route>
+        <Route path='/makepicks' Component={DriverPicker} exact></Route>
       </Routes>
+      </>
    </BrowserRouter>
     </QueryClientProvider>
   );

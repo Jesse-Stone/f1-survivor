@@ -11,7 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import {styled} from '@mui/system'
 
-function NavBar() {
+const NavBar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const handleDrawerOpen = () => {

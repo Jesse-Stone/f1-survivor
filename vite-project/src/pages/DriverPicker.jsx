@@ -4,9 +4,8 @@ import DriverProfile from '../components/DriverProfile';
 import driversData from '../data/driversData';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Navbar from '../components/NavBar';
 
-function DriverPicker() {
+const DriverPicker = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -41,7 +40,6 @@ function DriverPicker() {
 
   return (
       <>
-      <Navbar/>
         <Stack justifyContent={'center'} flexDirection={'row'}>
           <Typography variant="profile" fontSize={50} mt={3}>
             PICK YOUR DRIVER
