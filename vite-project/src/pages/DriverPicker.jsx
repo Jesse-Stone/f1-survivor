@@ -41,7 +41,7 @@ const DriverPicker = () => {
   return (
       <>
         <Stack justifyContent={'center'} flexDirection={'row'}>
-          <Typography variant="profile" fontSize={30} mt={3} sx = {{ '@media (min-width:550px)': {
+          <Typography variant="profile" fontSize={30} sx = {{ '@media (min-width:550px)': {
             fontSize: '60px'
           },
 
@@ -49,7 +49,7 @@ const DriverPicker = () => {
             PICK YOUR DRIVER
           </Typography>
         </Stack>
-        <Grid  justifyContent={'center'} container spacing={0} mb={0}>
+        <Grid  justifyContent={'center'} container spacing={0}>
           {driversData.Drivers.map((driver) => (
             <DriverProfile
               key={driver.driverId}
