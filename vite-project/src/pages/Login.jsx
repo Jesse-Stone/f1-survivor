@@ -9,7 +9,7 @@ const Login = () => {
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleAuthProvider)
-      navigate('/')
+      navigate('/home')
     }catch (err) {
       console.log(err)
     }
