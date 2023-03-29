@@ -30,11 +30,11 @@ body {
   
 }
 
-@media (min-width:2000px) {
+@media (min-width:2200px) {
   body {
     margin-left: 20%;
     margin-right: 20%;
-    margin-bottom: 20%;
+    margin-bottom: 10%;
     
   }
 }

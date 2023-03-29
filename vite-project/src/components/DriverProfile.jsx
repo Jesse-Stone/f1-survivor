@@ -4,12 +4,12 @@ import toOrdinalSuffix from '../utils/utils';
 import { useState } from 'react';
 
 const DriverProfile = ({ driver, points, position }) => {
-  const { givenName, familyName, flag, permanentNumber, team } = driver;
+  const { givenName, familyName, flag, permanentNumber, team, driverId } = driver;
 
   return (
     <Stack
       id="profile-card"
-      // onClick={handleClick} // not in use
+      onClick={()=>console.log(driver.driverId)}
       sx={{
         boxSizing: 'border-box',
         transition: 'all .2s ease-in-out',
