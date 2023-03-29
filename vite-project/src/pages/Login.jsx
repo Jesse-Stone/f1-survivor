@@ -9,7 +9,7 @@ const Login = () => {
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleAuthProvider)
-      navigate('/makepicks')
+      navigate('/')
     }catch (err) {
       console.log(err)
     }
