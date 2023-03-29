@@ -27,6 +27,16 @@ body {
   margin-left: 10%;
   margin-right: 10%;
   margin-bottom: 10%;
+  
+}
+
+@media (min-width:2000px) {
+  body {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 20%;
+    
+  }
 }
 
 /* body {

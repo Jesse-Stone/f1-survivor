@@ -39,32 +39,37 @@ const DriverPicker = () => {
   }));
 
   return (
-      <>
-        <Stack justifyContent={'center'} flexDirection={'row'}>
-          <Typography variant="profile" fontSize={30} sx = {{ '@media (min-width:550px)': {
-            fontSize: '60px'
-          },
-
-          }}>
-            PICK YOUR DRIVER
-          </Typography>
-        </Stack>
-        <Grid  justifyContent={'center'} container spacing={0}>
-          {driversData.Drivers.map((driver) => (
-            <DriverProfile
-              key={driver.driverId}
-              driver={driver}
-              points={
-                joinedArray.find(
-                  (result) => result.driverId === driver.driverId
-                ).points
-              }
-              position ={sortedData.findIndex(obj => obj.driver === driver.driverId) + 1}
-            />
-          ))}
-        </Grid>
-      </>
+    <>
+      <Stack justifyContent={'center'} flexDirection={'row'}>
+        <Typography
+          variant="profile"
+          fontSize={30}
+          sx={{
+            '@media (min-width:550px)': {
+              fontSize: '60px'
+            }
+          }}
+        >
+          PICK YOUR DRIVER
+        </Typography>
+      </Stack>
+      <Grid justifyContent={'center'} container spacing={0}>
+        {driversData.Drivers.map((driver) => (
+          <DriverProfile
+            key={driver.driverId}
+            driver={driver}
+            points={
+              joinedArray.find((result) => result.driverId === driver.driverId)
+                .points
+            }
+            position={
+              sortedData.findIndex((obj) => obj.driver === driver.driverId) + 1
+            }
+          />
+        ))}
+      </Grid>
+    </>
   );
-}
+};
 
 export default DriverPicker;
