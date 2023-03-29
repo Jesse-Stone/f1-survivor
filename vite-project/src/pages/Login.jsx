@@ -25,7 +25,6 @@ const Login = () => {
         <Typography
           variant="profile"
           fontSize={30}
-          mt={3}
           sx={{
             '@media (min-width:550px)': {
               fontSize: '60px'
