@@ -2,6 +2,7 @@ import { Box, Stack, Typography, Button } from '@mui/material';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, googleAuthProvider } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
+import GoogleButton from 'react-google-button'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -29,13 +30,9 @@ const Login = () => {
           >
             FORMULA 1 // SURVIVOR
           </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={signInWithGoogle}
-          >
-            LOGIN
-          </Button>
+          <GoogleButton
+  onClick={signInWithGoogle}
+/>
         </Stack>
       </Stack>
     </>
