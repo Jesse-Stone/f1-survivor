@@ -30,7 +30,7 @@ const Login = () => {
 
   return (
     <>
-    <video id='myVideo' autoPlay="autoplay" loop playsInline>
+    <video id='myVideo' autoPlay="autoplay" muted loop playsInline>
       <source src={F1Video} type="video/mp4" />
     </video>
       <Stack justifyContent={'center'} alignItems={'center'} height={'80vh'}>
@@ -74,7 +74,6 @@ const Login = () => {
           >
             Sign In
           </Button>
-          {/* <VolumeOffIcon onClick={handleMuteToggle}/> */}
           <IconButton onClick={handleMuteToggle}>
           {muteIcon ? <VolumeOffIcon sx={{color: 'white'}}/> : <VolumeUpIcon sx={{color: 'white'}} />}
           </IconButton>
