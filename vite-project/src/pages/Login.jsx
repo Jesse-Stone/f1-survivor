@@ -18,7 +18,7 @@ const Login = () => {
   };
   return (
     <>
-    <video autoplay="autoplay" muted loop>
+    <video autoplay="autoplay" muted loop playsInline>
       <source src={F1Video} type="video/mp4" />
     </video>
       <Stack justifyContent={'center'} alignItems={'center'} height={'80vh'}>
