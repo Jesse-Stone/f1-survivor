@@ -2,7 +2,6 @@ import { Box, Stack, Typography, Button } from '@mui/material';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, googleAuthProvider } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
-import GoogleButton from 'react-google-button'
 import F1Video from '../assets/F1 1980s - The Era of Heroes.mp4'
 
 const Login = () => {
@@ -18,7 +17,7 @@ const Login = () => {
   };
   return (
     <>
-    <video autoplay="autoplay" muted loop playsInline>
+    <video autoPlay="autoplay" muted loop playsInline>
       <source src={F1Video} type="video/mp4" />
     </video>
       <Stack justifyContent={'center'} alignItems={'center'} height={'80vh'}>
@@ -62,9 +61,6 @@ const Login = () => {
           >
             Sign In
           </Button>
-          {/* <GoogleButton
-  onClick={signInWithGoogle}
-/> */}
         </Stack>
       </Stack>
     </>
