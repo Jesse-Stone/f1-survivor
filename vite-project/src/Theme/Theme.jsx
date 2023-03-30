@@ -26,6 +26,11 @@ const theme = createTheme({
       fontFamily:['f1bold']
     },
   },
+  palette: {
+    primary: {
+      main: '#FF1801'
+    }
+  }
 });
 
 export default theme;
