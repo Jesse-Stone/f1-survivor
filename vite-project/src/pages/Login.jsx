@@ -75,7 +75,7 @@ const Login = () => {
             Sign In
           </Button>
           <IconButton onClick={handleMuteToggle}>
-          {muteIcon ? <VolumeOffIcon sx={{color: 'white'}}/> : <VolumeUpIcon sx={{color: 'white'}} />}
+          {muteIcon ? <VolumeUpIcon sx={{color: 'white'}}/> : <VolumeOffIcon sx={{color: 'white'}} />}
           </IconButton>
         </Stack>
       </Stack>
