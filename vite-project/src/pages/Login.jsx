@@ -46,16 +46,21 @@ const Login = () => {
             SURVIVOR
           </Typography>
           <Button
-            variant="outlined"
+            variant="contained"
             color="primary"
             onClick={signInWithGoogle}
             sx= {{
               width: '30%',
               height:'40%',
-              mt: 2
+              mt: 2,
+              fontFamily:'profile2',
+              borderRadius:'8px',
+              '&:hover': {
+
+              }
             }}
           >
-            Login
+            Sign In
           </Button>
           {/* <GoogleButton
   onClick={signInWithGoogle}
