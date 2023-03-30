@@ -1,8 +1,8 @@
-import { Box, Stack, Typography, Button } from '@mui/material';
+import { Stack, Typography, Button } from '@mui/material';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, googleAuthProvider } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
-import F1Video from '../assets/F1 1980s - The Era of Heroes.mp4'
+import F1Video from '../assets/F1 1980s - The Era of Heroes.mp4';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import { IconButton } from '@mui/material';
@@ -22,17 +22,16 @@ const Login = () => {
   };
 
   const handleMuteToggle = () => {
-    const  video=document.getElementById("myVideo");
+    const video = document.getElementById('myVideo');
     video.muted = !video.muted;
     setMuteIcon(!muteIcon);
-  }
-
+  };
 
   return (
     <>
-    <video id='myVideo' autoPlay="autoplay" muted loop playsInline>
-      <source src={F1Video} type="video/mp4" />
-    </video>
+      <video id="myVideo" autoPlay="autoplay" muted loop playsInline>
+        <source src={F1Video} type="video/mp4" />
+      </video>
       <Stack justifyContent={'center'} alignItems={'center'} height={'80vh'}>
         <Stack justifyContent={'center'} alignItems={'center'}>
           <Typography
@@ -61,21 +60,22 @@ const Login = () => {
             variant="contained"
             color="primary"
             onClick={signInWithGoogle}
-            sx= {{
+            sx={{
               width: '30%',
-              height:'40%',
+              height: '40%',
               mt: 2,
-              fontFamily:'profile2',
-              borderRadius:'8px',
-              '&:hover': {
-
-              }
+              fontFamily: 'profile2',
+              borderRadius: '8px'
             }}
           >
             Sign In
           </Button>
           <IconButton onClick={handleMuteToggle}>
-          {muteIcon ? <VolumeUpIcon sx={{color: 'white'}}/> : <VolumeOffIcon sx={{color: 'white'}} />}
+            {muteIcon ? (
+              <VolumeUpIcon sx={{ color: 'white' }} />
+            ) : (
+              <VolumeOffIcon sx={{ color: 'white' }} />
+            )}
           </IconButton>
         </Stack>
       </Stack>

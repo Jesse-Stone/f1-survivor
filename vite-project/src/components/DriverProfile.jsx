@@ -1,16 +1,33 @@
 import { Stack, Divider, Typography, Box, Dialog } from '@mui/material';
 import driversData from '../data/driversData';
 import toOrdinalSuffix from '../utils/utils';
-import SimpleDialog from './DriverProfileModal';
 import { useState } from 'react';
+import DriverDialog from './DriverDialog';
 
 const DriverProfile = ({ driver, points, position }) => {
-  const { givenName, familyName, flag, permanentNumber, team, driverId } = driver;
+  const { givenName, familyName, flag, permanentNumber, team, driverId } =
+    driver;
+
+  const [open, setOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState([]);
+
+  const handleDriverCardClick = () => {
+    setOpen(true);
+    console.log(driver.driverId);
+    console.log(open);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    console.log('close');
+    // setSelectedValue(value);
+  };
 
   return (
+<>
     <Stack
       id="profile-card"
-      onClick={()=>console.log(driver.driverId)}
+      onClick={handleDriverCardClick}
       sx={{
         boxSizing: 'border-box',
         transition: 'all .2s ease-in-out',
@@ -30,6 +47,7 @@ const DriverProfile = ({ driver, points, position }) => {
         }
       }}
     >
+
       {driver && (
         <>
           <Stack
@@ -124,8 +142,11 @@ const DriverProfile = ({ driver, points, position }) => {
             </Typography>
           </Box>
         </>
-      )}
+      )}      
     </Stack>
+    <DriverDialog open={open} onClose= {handleClose}/>
+
+    </>
   );
 };
 

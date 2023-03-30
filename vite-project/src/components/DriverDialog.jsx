@@ -1,5 +1,3 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import List from '@mui/material/List';
@@ -16,7 +14,7 @@ import { blue } from '@mui/material/colors';
 
 const emails = ['username@gmail.com', 'user02@gmail.com'];
 
-function SimpleDialog(props) {
+const DriverDialog = (props) => {
   const { onClose, selectedValue, open } = props;
 
   const handleClose = () => {
@@ -29,14 +27,11 @@ function SimpleDialog(props) {
 
   return (
     <Dialog onClose={handleClose} open={open}>
-      <DialogTitle>Set backup account</DialogTitle>
+      <DialogTitle>PICK A MOFO</DialogTitle>
       <List sx={{ pt: 0 }}>
         {emails.map((email) => (
           <ListItem disableGutters>
-            <ListItemButton
-              onClick={() => handleListItemClick(email)}
-              key={email}
-            >
+            <ListItemButton onClick={() => handleListItemClick(email)} key={email}>
               <ListItemAvatar>
                 <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
                   <PersonIcon />
@@ -65,41 +60,4 @@ function SimpleDialog(props) {
   );
 }
 
-SimpleDialog.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-  selectedValue: PropTypes.string.isRequired
-};
-
-export function SimpleDialogDemo() {
-  const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (value) => {
-    setOpen(false);
-    setSelectedValue(value);
-  };
-
-  return (
-    <div>
-      <Typography variant="subtitle1" component="div">
-        Selected: {selectedValue}
-      </Typography>
-      <br />
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open simple dialog
-      </Button>
-      <SimpleDialog
-        selectedValue={selectedValue}
-        open={open}
-        onClose={handleClose}
-      />
-    </div>
-  );
-}
-
-export default SimpleDialog;
+export default DriverDialog;
