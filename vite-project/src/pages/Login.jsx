@@ -21,7 +21,7 @@ const Login = () => {
         <Stack justifyContent={'center'} alignItems={'center'}>
           <Typography
             variant="f1bold"
-            fontSize={30}
+            fontSize={40}
             sx={{
               '@media (min-width:550px)': {
                 fontSize: '65px'
@@ -32,7 +32,7 @@ const Login = () => {
           </Typography>
           <Typography
             variant="f1"
-            fontSize={20}
+            fontSize={30}
             sx={{
               '@media (min-width:550px)': {
                 fontSize: '45px'
