@@ -1,6 +1,7 @@
 import { Stack, Divider, Typography, Box, Dialog } from '@mui/material';
 import driversData from '../data/driversData';
 import toOrdinalSuffix from '../utils/utils';
+import SimpleDialog from './DriverProfileModal';
 import { useState } from 'react';
 
 const DriverProfile = ({ driver, points, position }) => {
