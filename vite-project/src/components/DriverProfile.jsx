@@ -1,6 +1,6 @@
 import { Stack, Divider, Typography, Box, Dialog } from '@mui/material';
 import driversData from '../data/driversData';
-import toOrdinalSuffix from '../utils/utils';
+import {toOrdinalSuffix} from '../utils/utils';
 import { useState } from 'react';
 import DriverDialog from './DriverDialog';
 

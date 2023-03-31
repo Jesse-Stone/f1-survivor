@@ -7,6 +7,7 @@ import axios from 'axios';
 
 const DriverPicker = () => {
   const [data, setData] = useState([]);
+  const [schedule, setSchedule] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,6 +15,10 @@ const DriverPicker = () => {
         'https://ergast.com/api/f1/2023/results.json'
       );
       setData(response.data.MRData.RaceTable.Races);
+      const scheduleResponse = await axios.get(
+        'https://ergast.com/api/f1/current/next.json'
+      );
+      setSchedule(scheduleResponse.data.MRData.RaceTable.Races[0]);
     };
     fetchData();
   }, []);
@@ -40,7 +45,8 @@ const DriverPicker = () => {
 
   return (
     <>
-      <Stack justifyContent={'center'} flexDirection={'row'}>
+    {console.log(schedule.raceName)}
+      <Stack justifyContent={'center'} flexDirection={'column'} alignItems={'center'}>
         <Typography
           variant="profile"
           fontSize={30}
@@ -51,6 +57,17 @@ const DriverPicker = () => {
           }}
         >
           PICK YOUR DRIVER
+        </Typography>
+        <Typography
+          variant="profile2"
+          fontSize={20}
+          sx={{
+            '@media (min-width:550px)': {
+              fontSize: '40px'
+            }
+          }}
+        >
+          {schedule.raceName}
         </Typography>
       </Stack>
       <Grid justifyContent={'center'} container spacing={0}>

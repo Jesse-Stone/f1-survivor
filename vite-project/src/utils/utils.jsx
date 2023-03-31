@@ -1,4 +1,4 @@
-const toOrdinalSuffix = num => {
+export const toOrdinalSuffix = (num) => {
   const int = parseInt(num),
     digits = [int % 10, int % 100],
     ordinals = ['st', 'nd', 'rd', 'th'],
@@ -9,4 +9,16 @@ const toOrdinalSuffix = num => {
     : ordinals[3];
 };
 
-export default toOrdinalSuffix;
+// export const nextRaceDateFinder = (data) => {
+//   const dates = data.dates.map(date => new Date(date)).sort((a, b) => a - b);
+//   const currentDate = new Date();
+//   console.log(dates)
+//   let closestDate = null;
+//   for (let i = dates.length - 1; i >= 0; i--) {
+//     if (dates[i] <= currentDate) {
+//       closestDate = dates[i];
+//       break;
+//     }
+//   }
+//   return closestDate;
+// };
