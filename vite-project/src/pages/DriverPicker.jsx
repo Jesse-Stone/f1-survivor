@@ -48,7 +48,7 @@ const DriverPicker = () => {
     {console.log(schedule.raceName)}
       <Stack justifyContent={'center'} flexDirection={'column'} alignItems={'center'}>
         <Typography
-          variant="profile"
+          variant="f1"
           fontSize={30}
           sx={{
             '@media (min-width:550px)': {
@@ -59,7 +59,7 @@ const DriverPicker = () => {
           PICK YOUR DRIVER
         </Typography>
         <Typography
-          variant="profile2"
+          variant="f1bold"
           fontSize={20}
           sx={{
             '@media (min-width:550px)': {
