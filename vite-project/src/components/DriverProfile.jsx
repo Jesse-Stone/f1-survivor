@@ -4,7 +4,7 @@ import {toOrdinalSuffix} from '../utils/utils';
 import { useState } from 'react';
 import DriverDialog from './DriverDialog';
 
-const DriverProfile = ({ driver, points, position }) => {
+const DriverProfile = ({ driver, points, position, race }) => {
   const { givenName, familyName, flag, permanentNumber, team, driverId } =
     driver;
 
@@ -14,12 +14,10 @@ const DriverProfile = ({ driver, points, position }) => {
   const handleDriverCardClick = () => {
     setOpen(true);
     console.log(driver.driverId);
-    console.log(open);
   };
 
   const handleClose = () => {
     setOpen(false);
-    console.log('close');
     // setSelectedValue(value);
   };
 
@@ -144,7 +142,7 @@ const DriverProfile = ({ driver, points, position }) => {
         </>
       )}      
     </Stack>
-    <DriverDialog open={open} onClose= {handleClose}/>
+    <DriverDialog race={race} open={open} onClose= {handleClose} driver = {`${givenName} ${familyName}`}/>
 
     </>
   );

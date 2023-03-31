@@ -49,7 +49,7 @@ const DriverPicker = () => {
       <Stack justifyContent={'center'} flexDirection={'column'} alignItems={'center'}>
         <Typography
           variant="f1"
-          fontSize={30}
+          fontSize={25}
           sx={{
             '@media (min-width:550px)': {
               fontSize: '60px'
@@ -60,7 +60,7 @@ const DriverPicker = () => {
         </Typography>
         <Typography
           variant="f1bold"
-          fontSize={20}
+          fontSize={17}
           sx={{
             '@media (min-width:550px)': {
               fontSize: '40px'
@@ -82,6 +82,7 @@ const DriverPicker = () => {
             position={
               sortedData.findIndex((obj) => obj.driver === driver.driverId) + 1
             }
+            race = {schedule.raceName}
           />
         ))}
       </Grid>
