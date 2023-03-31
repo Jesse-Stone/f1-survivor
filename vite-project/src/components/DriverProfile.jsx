@@ -147,8 +147,13 @@ const DriverProfile = ({ driver, points, position, race }) => {
       <DriverDialog
         race={race}
         open={open}
+        color={team.color}
+        flag={flag}
+        team={team.name}
         onClose={handleClose}
         driver={`${givenName} ${familyName}`}
+        firstName={givenName}
+        lastName={familyName}
       />
     </>
   );

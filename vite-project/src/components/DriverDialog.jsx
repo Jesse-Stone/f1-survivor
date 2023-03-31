@@ -1,21 +1,80 @@
 import Dialog from '@mui/material/Dialog';
-import Typography from '@mui/material/Typography';
+import { Stack, Typography, Button, Divider, Box } from '@mui/material';
+import { useState } from 'react';
 
 const DriverDialog = (props) => {
-  const { onClose, selectedValue, open, race, driver } = props;
+  const {
+    onClose,
+    selectedValue,
+    open,
+    race,
+    driver,
+    color,
+    flag,
+    firstName,
+    team,
+    lastName
+  } = props;
+  const [loaded, setLoaded] = useState(false);
 
   const handleClose = () => {
     onClose(selectedValue);
   };
 
   return (
-    <Dialog onClose={handleClose} open={open}>
-      <Typography>Confrim Driver Selection</Typography>
-      <Typography>
-        {driver}
-        {race}
-      </Typography>
-    </Dialog>
+    <>
+      {loaded ? null : (
+        <Dialog onClose={handleClose} open={open}>
+          <Stack
+            justifyContent={'space-around'}
+            alignItems={'center'}
+            height={'150px'}
+            width={'300px'}
+          >
+            <Typography fontSize={20} variant={'f1bold'}>
+              Driver Selection
+            </Typography>
+
+            <Stack justifyContent={'center'} alignItems={'center'}>
+              <Divider width={'100%'} />
+
+              <Stack
+                direction={'row'}
+                justifyContent={'space-between'}
+                alignItems={'center'}
+                color="black"
+                sx={{ padding: 'auto' }}
+              >
+                <Stack direction={'row'} alignItems={'center'} width={'200px'}>
+                  <Box
+                    sx={{
+                      backgroundColor: `${color}`,
+                      height: '30px',
+                      width: '5px'
+                    }}
+                  ></Box>
+                  <Stack marginLeft={1} justifyContent={'space-between'}>
+                    <Typography variant="f1" fontSize={12} fontWeight={100}>
+                      {`${firstName}`}
+                    </Typography>
+                    <Typography variant="f1bold" fontSize={16}>
+                      {`${lastName}`.toUpperCase()}
+                    </Typography>
+                  </Stack>
+                </Stack>
+                <Typography variant="profile2" fontSize={16}>
+                  {team}
+                </Typography>
+              </Stack>
+              <Divider width={'100%'} />
+            </Stack>
+            <Button variant={'contained'} sx={{ fontFamily: 'profile2' }}>
+              Confirm
+            </Button>
+          </Stack>
+        </Dialog>
+      )}
+    </>
   );
 };
 
