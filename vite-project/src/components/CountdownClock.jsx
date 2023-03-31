@@ -31,23 +31,23 @@ const CountdownClock = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <Stack justifyContent={'center'} width={'70vh'}>
+    <Stack justifyContent={'center'} width={'40vh'}>
       <Stack direction={'row'} justifyContent={'space-around'}>
         <Stack justifyContent={'center'} alignItems={'center'}>
-        <Typography variant={'profile2'} fontSize={20}>Days</Typography>
-        <Typography variant={'f1'}>{countdown.days}</Typography>
+        <Typography variant={'profile2'} fontSize={18}>Days</Typography>
+        <Typography variant={'f1bold'} fontSize={20}>{countdown.days}</Typography>
         </Stack>
         <Stack justifyContent={'center'} alignItems={'center'}>
-        <Typography variant={'profile2'} fontSize={20}>Hours</Typography>
-        <Typography variant={'f1'}>{countdown.hours}</Typography>
+        <Typography variant={'profile2'} fontSize={18}>Hours</Typography>
+        <Typography variant={'f1bold'} fontSize={20}>: {countdown.hours}</Typography>
         </Stack>
         <Stack justifyContent={'center'} alignItems={'center'}>
-        <Typography variant={'profile2'} fontSize={20}>Minutes</Typography>
-        <Typography variant={'f1'}>{countdown.minutes}</Typography>
+        <Typography variant={'profile2'} fontSize={18}>Minutes</Typography>
+        <Typography variant={'f1bold'} fontSize={20}>: {countdown.minutes}</Typography>
         </Stack>
         <Stack justifyContent={'center'} alignItems={'center'}>
-        <Typography variant={'profile2'} fontSize={20}>Seconds</Typography>
-        <Typography variant={'f1'}>{countdown.seconds}</Typography>
+        <Typography variant={'profile2'} fontSize={18}>Seconds</Typography>
+        <Typography variant={'f1bold'} fontSize={20}>: {countdown.seconds}</Typography>
         </Stack>
       </Stack>
     </Stack>
