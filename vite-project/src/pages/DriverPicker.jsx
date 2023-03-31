@@ -9,7 +9,7 @@ import CountdownClock from '../components/CountdownClock';
 const DriverPicker = () => {
   const [data, setData] = useState([]);
   const [schedule, setSchedule] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,8 +19,9 @@ const DriverPicker = () => {
       setData(response.data.MRData.RaceTable.Races);
       const scheduleResponse = await axios.get(
         'https://ergast.com/api/f1/current/next.json'
-      );
-      setSchedule(scheduleResponse.data.MRData.RaceTable.Races[0]);
+      )
+        setSchedule(scheduleResponse.data.MRData.RaceTable.Races[0]);
+
       setLoading(false);
     };
     fetchData();
@@ -48,10 +49,13 @@ const DriverPicker = () => {
 
   return (
     <>
+    {loading && <h1>loading</h1>}
+    {!loading && 
+    <>
       {console.log(schedule.Qualifying)}
-      {/* {console.log(    new Date(
+      {console.log(    new Date(
                 `${schedule.Qualifying.date}T${schedule.Qualifying.time}`
-              ))} */}
+              ))}
       <Stack
         justifyContent={'center'}
         flexDirection={'column'}
@@ -80,7 +84,6 @@ const DriverPicker = () => {
           {schedule.raceName}
         </Typography>
         <Stack alignItems={'center'} justifyContent={'space-between'}>
-          {/* {schedule && 
           
           <CountdownClock
             targetDate={schedule ? 
@@ -90,8 +93,7 @@ const DriverPicker = () => {
               : new Date()
             }
           />
-}
-          <Typography variant={'f1'}>Until Qualifying</Typography> */}
+          <Typography variant={'f1'}>Until Qualifying</Typography>
         </Stack>
       </Stack>
       <Grid justifyContent={'center'} container spacing={0}>
@@ -110,6 +112,8 @@ const DriverPicker = () => {
           />
         ))}
       </Grid>
+      </>
+      }
     </>
   );
 };

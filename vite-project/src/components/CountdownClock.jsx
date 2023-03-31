@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Stack} from '@mui/material';
+import { Typography, Stack } from '@mui/material';
 
 const CountdownClock = ({ targetDate }) => {
-  const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [countdown, setCountdown] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -14,7 +19,9 @@ const CountdownClock = ({ targetDate }) => {
         setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       } else {
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
         setCountdown({ days, hours, minutes, seconds });
@@ -24,11 +31,25 @@ const CountdownClock = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <Stack direction={'row'} justifyContent={'space-around'}>
-      <Typography variant={'f1'}>{countdown.days}:</Typography>
-      <Typography variant={'f1'}>{countdown.hours}:</Typography>
-      <Typography variant={'f1'}>{countdown.minutes}:</Typography>
-      <Typography variant={'f1'}>{countdown.seconds}</Typography>
+    <Stack justifyContent={'center'} width={'70vh'}>
+      <Stack direction={'row'} justifyContent={'space-between'}>
+        <Stack justifyContent={'center'} alignItems={'center'}>
+        <Typography variant={'f1'}>days</Typography>
+        <Typography variant={'f1'}>{countdown.days}</Typography>
+        </Stack>
+        <Stack justifyContent={'center'} alignItems={'center'}>
+        <Typography variant={'f1'}>hours</Typography>
+        <Typography variant={'f1'}>{countdown.hours}</Typography>
+        </Stack>
+        <Stack justifyContent={'center'} alignItems={'center'}>
+        <Typography variant={'f1'}>minutes</Typography>
+        <Typography variant={'f1'}>{countdown.minutes}</Typography>
+        </Stack>
+        <Stack justifyContent={'center'} alignItems={'center'}>
+        <Typography variant={'f1'}>seconds</Typography>
+        <Typography variant={'f1'}>{countdown.seconds}</Typography>
+        </Stack>
+      </Stack>
     </Stack>
   );
 };
