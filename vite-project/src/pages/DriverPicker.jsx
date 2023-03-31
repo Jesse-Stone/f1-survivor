@@ -9,6 +9,7 @@ import CountdownClock from '../components/CountdownClock';
 const DriverPicker = () => {
   const [data, setData] = useState([]);
   const [schedule, setSchedule] = useState([]);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,6 +21,7 @@ const DriverPicker = () => {
         'https://ergast.com/api/f1/current/next.json'
       );
       setSchedule(scheduleResponse.data.MRData.RaceTable.Races[0]);
+      setLoading(false);
     };
     fetchData();
   }, []);
@@ -47,6 +49,9 @@ const DriverPicker = () => {
   return (
     <>
       {console.log(schedule.Qualifying)}
+      {/* {console.log(    new Date(
+                `${schedule.Qualifying.date}T${schedule.Qualifying.time}`
+              ))} */}
       <Stack
         justifyContent={'center'}
         flexDirection={'column'}
@@ -75,14 +80,18 @@ const DriverPicker = () => {
           {schedule.raceName}
         </Typography>
         <Stack alignItems={'center'} justifyContent={'space-between'}>
+          {/* {schedule && 
+          
           <CountdownClock
-            targetDate={
+            targetDate={schedule ? 
               new Date(
                 `${schedule.Qualifying.date}T${schedule.Qualifying.time}`
               )
+              : new Date()
             }
           />
-          <Typography variant={'f1'}>Until Qualifying</Typography>
+}
+          <Typography variant={'f1'}>Until Qualifying</Typography> */}
         </Stack>
       </Stack>
       <Grid justifyContent={'center'} container spacing={0}>
