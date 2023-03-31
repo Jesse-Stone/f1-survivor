@@ -4,10 +4,11 @@ import DriverProfile from '../components/DriverProfile';
 import driversData from '../data/driversData';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import CountdownClock from '../components/CountdownClock';
 
 const DriverPicker = () => {
   const [data, setData] = useState([]);
-  const [schedule, setSchedule] = useState([])
+  const [schedule, setSchedule] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,8 +46,12 @@ const DriverPicker = () => {
 
   return (
     <>
-    {console.log(schedule.raceName)}
-      <Stack justifyContent={'center'} flexDirection={'column'} alignItems={'center'}>
+      {console.log(schedule.Qualifying)}
+      <Stack
+        justifyContent={'center'}
+        flexDirection={'column'}
+        alignItems={'center'}
+      >
         <Typography
           variant="f1"
           fontSize={25}
@@ -69,6 +74,16 @@ const DriverPicker = () => {
         >
           {schedule.raceName}
         </Typography>
+        <Stack alignItems={'center'} justifyContent={'space-between'}>
+          <CountdownClock
+            targetDate={
+              new Date(
+                `${schedule.Qualifying.date}T${schedule.Qualifying.time}`
+              )
+            }
+          />
+          <Typography variant={'f1'}>Until Qualifying</Typography>
+        </Stack>
       </Stack>
       <Grid justifyContent={'center'} container spacing={0}>
         {driversData.Drivers.map((driver) => (
@@ -82,7 +97,7 @@ const DriverPicker = () => {
             position={
               sortedData.findIndex((obj) => obj.driver === driver.driverId) + 1
             }
-            race = {schedule.raceName}
+            race={schedule.raceName}
           />
         ))}
       </Grid>
