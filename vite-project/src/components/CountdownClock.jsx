@@ -32,21 +32,21 @@ const CountdownClock = ({ targetDate }) => {
 
   return (
     <Stack justifyContent={'center'} width={'70vh'}>
-      <Stack direction={'row'} justifyContent={'space-between'}>
+      <Stack direction={'row'} justifyContent={'space-around'}>
         <Stack justifyContent={'center'} alignItems={'center'}>
-        <Typography variant={'f1'}>days</Typography>
+        <Typography variant={'profile2'} fontSize={20}>Days</Typography>
         <Typography variant={'f1'}>{countdown.days}</Typography>
         </Stack>
         <Stack justifyContent={'center'} alignItems={'center'}>
-        <Typography variant={'f1'}>hours</Typography>
+        <Typography variant={'profile2'} fontSize={20}>Hours</Typography>
         <Typography variant={'f1'}>{countdown.hours}</Typography>
         </Stack>
         <Stack justifyContent={'center'} alignItems={'center'}>
-        <Typography variant={'f1'}>minutes</Typography>
+        <Typography variant={'profile2'} fontSize={20}>Minutes</Typography>
         <Typography variant={'f1'}>{countdown.minutes}</Typography>
         </Stack>
         <Stack justifyContent={'center'} alignItems={'center'}>
-        <Typography variant={'f1'}>seconds</Typography>
+        <Typography variant={'profile2'} fontSize={20}>Seconds</Typography>
         <Typography variant={'f1'}>{countdown.seconds}</Typography>
         </Stack>
       </Stack>
