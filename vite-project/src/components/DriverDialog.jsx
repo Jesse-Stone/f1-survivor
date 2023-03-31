@@ -28,12 +28,17 @@ const DriverDialog = (props) => {
           <Stack
             justifyContent={'space-around'}
             alignItems={'center'}
-            height={'150px'}
+            height={'175px'}
             width={'300px'}
           >
+            <Stack alignItems={'center'}>
             <Typography fontSize={20} variant={'f1bold'}>
               Driver Selection
             </Typography>
+            <Typography fontSize={12} variant={'f1'}>
+              {race}
+            </Typography>
+            </Stack>
 
             <Stack justifyContent={'center'} alignItems={'center'}>
               <Divider width={'100%'} />
