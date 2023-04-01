@@ -11,6 +11,7 @@ const DriverPicker = () => {
   const [data, setData] = useState([]);
   const [schedule, setSchedule] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [qualResults, setQualResults] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +23,12 @@ const DriverPicker = () => {
         'https://ergast.com/api/f1/current/next.json'
       );
       setSchedule(scheduleResponse.data.MRData.RaceTable.Races[0]);
-
+      const qualifyingResponse = await axios.get(
+        'https://ergast.com/api/f1/current/next/qualifying.json'
+      );
+      setQualResults(
+        qualifyingResponse.data.MRData.RaceTable.Races[0].QualifyingResults
+      );
       setLoading(false);
     };
     fetchData();
@@ -50,6 +56,9 @@ const DriverPicker = () => {
 
   return (
     <>
+      {console.log(schedule)}
+      {console.log(qualResults)}
+
       {loading && (
         <Stack justifyContent={'center'} alignItems={'center'} height={'80vh'}>
           <CircularProgress sx={{ height: '500px', width: '500px' }} />
@@ -58,8 +67,6 @@ const DriverPicker = () => {
 
       {!loading && (
         <>
-          {console.log(schedule)}
-
           <Stack
             justifyContent={'center'}
             flexDirection={'column'}
@@ -87,13 +94,19 @@ const DriverPicker = () => {
             >
               {schedule.raceName}
             </Typography>
-            <Stack direction={'column'} alignItems={'center'}      sx={{
+            <Stack
+              direction={'column'}
+              alignItems={'center'}
+              sx={{
                 '@media (min-width:850px)': {
-                  flexDirection:'row'
+                  flexDirection: 'row'
                 }
-              }}>
+              }}
+            >
               <Stack direction={'column'} alignItems={'center'}>
-                <Typography variant={'f1bold'} fontSize={14}>Until Qualifying</Typography>
+                <Typography variant={'f1bold'} fontSize={14}>
+                  Until Qualifying
+                </Typography>
 
                 <CountdownClock
                   targetDate={
@@ -106,14 +119,14 @@ const DriverPicker = () => {
                 />
               </Stack>
               <Stack direction={'column'} alignItems={'center'}>
-                <Typography variant={'f1bold'} fontSize={14}>Until Race</Typography>
+                <Typography variant={'f1bold'} fontSize={14}>
+                  Until Race
+                </Typography>
 
                 <CountdownClock
                   targetDate={
                     schedule
-                      ? new Date(
-                          `${schedule.date}T${schedule.time}`
-                        )
+                      ? new Date(`${schedule.date}T${schedule.time}`)
                       : new Date()
                   }
                 />
@@ -136,8 +149,14 @@ const DriverPicker = () => {
                   ) + 1
                 }
                 race={schedule.raceName}
+                qualifying={
+                  qualResults.find(
+                    (position) => position.Driver.driverId === driver.driverId
+                  ).position
+                }
               />
             ))}
+            {/* {console.log(qualResults.find((position) => position.Driver.driverId === 'russell').position)} */}
           </Grid>
         </>
       )}

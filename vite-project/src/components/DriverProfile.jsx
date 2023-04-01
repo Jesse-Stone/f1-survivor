@@ -5,8 +5,15 @@ import { useState } from 'react';
 import DriverDialog from './DriverDialog';
 
 const DriverProfile = ({ driver, points, position, race }) => {
-  const { givenName, familyName, flag, permanentNumber, team, driverId } =
-    driver;
+  const {
+    givenName,
+    familyName,
+    flag,
+    permanentNumber,
+    team,
+    driverId,
+    qualifying
+  } = driver;
 
   const [open, setOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState([]);
@@ -111,6 +118,16 @@ const DriverProfile = ({ driver, points, position, race }) => {
             <Typography variant="profile2" color="text.secondary" fontSize={14}>
               {team.name}
             </Typography>
+            {qualifying && 
+              <Typography
+                variant="profile"
+                color="text.secondary"
+                fontSize={14}
+              >
+                {2}
+              </Typography>
+            }
+
             <Stack>
               <Box
                 component={'img'}
