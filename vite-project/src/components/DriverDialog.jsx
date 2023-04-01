@@ -41,7 +41,7 @@ const DriverDialog = (props) => {
             </Stack>
 
             <Stack justifyContent={'center'} alignItems={'center'}>
-              <Divider width={'100%'} />
+              <Divider width={'100%'}/>
 
               <Stack
                 direction={'row'}
@@ -71,7 +71,7 @@ const DriverDialog = (props) => {
                   {team}
                 </Typography>
               </Stack>
-              <Divider width={'100%'} />
+              <Divider width={'100%'}/>
             </Stack>
             <Button variant={'contained'} sx={{ fontFamily: 'profile2' }}>
               Confirm
