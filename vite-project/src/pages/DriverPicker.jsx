@@ -1,5 +1,4 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { Grid, Stack, Box, Typography } from '@mui/material';
+import { Grid, Stack, Typography, } from '@mui/material';
 import DriverProfile from '../components/DriverProfile';
 import driversData from '../data/driversData';
 import React, { useEffect, useState } from 'react';
