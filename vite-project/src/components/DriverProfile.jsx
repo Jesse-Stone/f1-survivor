@@ -4,16 +4,9 @@ import { toOrdinalSuffix } from '../utils/utils';
 import { useState } from 'react';
 import DriverDialog from './DriverDialog';
 
-const DriverProfile = ({ driver, points, position, race }) => {
-  const {
-    givenName,
-    familyName,
-    flag,
-    permanentNumber,
-    team,
-    driverId,
-    qualifying
-  } = driver;
+const DriverProfile = ({ driver, points, position, race, qualifying }) => {
+  const { givenName, familyName, flag, permanentNumber, team, driverId } =
+    driver;
 
   const [open, setOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState([]);
@@ -29,6 +22,7 @@ const DriverProfile = ({ driver, points, position, race }) => {
 
   return (
     <>
+      {/* {!qualifying && <h1>loading</h1>} */}
       <Stack
         id="profile-card"
         onClick={handleDriverCardClick}
@@ -118,15 +112,16 @@ const DriverProfile = ({ driver, points, position, race }) => {
             <Typography variant="profile2" color="text.secondary" fontSize={14}>
               {team.name}
             </Typography>
-            {qualifying && 
-              <Typography
-                variant="profile"
-                color="text.secondary"
-                fontSize={14}
-              >
-                {2}
-              </Typography>
-            }
+            {qualifying && (
+              <Stack direction={'row'} mt={1} mb={-2}>
+                <Typography color="text.secondary" fontSize={14}>
+                  Q:{qualifying}
+                </Typography>
+                <Typography color="text.secondary" fontSize={14}>
+                {toOrdinalSuffix(qualifying)}
+                </Typography>
+              </Stack>
+            )}
 
             <Stack>
               <Box
@@ -157,6 +152,11 @@ const DriverProfile = ({ driver, points, position, race }) => {
               >
                 {permanentNumber}
               </Typography>
+              <Typography
+                variant="profile"
+                fontSize={70}
+                color={`${team.color}`}
+              ></Typography>
             </Box>
           </>
         )}

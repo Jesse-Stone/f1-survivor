@@ -11,7 +11,7 @@ const DriverPicker = () => {
   const [data, setData] = useState([]);
   const [schedule, setSchedule] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [qualResults, setQualResults] = useState([]);
+  const [qualResults, setQualResults] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -154,6 +154,7 @@ const DriverPicker = () => {
                     (position) => position.Driver.driverId === driver.driverId
                   ).position
                 }
+                // qualifying={30}
               />
             ))}
             {/* {console.log(qualResults.find((position) => position.Driver.driverId === 'russell').position)} */}
