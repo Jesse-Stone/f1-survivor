@@ -58,10 +58,8 @@ const DriverPicker = () => {
 
       {!loading && (
         <>
-          {console.log(schedule.Qualifying)}
-          {console.log(
-            new Date(`${schedule.Qualifying.date}T${schedule.Qualifying.time}`)
-          )}
+          {console.log(schedule)}
+
           <Stack
             justifyContent={'center'}
             flexDirection={'column'}
@@ -71,7 +69,7 @@ const DriverPicker = () => {
               variant="f1"
               fontSize={25}
               sx={{
-                '@media (min-width:550px)': {
+                '@media (min-width:850px)': {
                   fontSize: '60px'
                 }
               }}
@@ -82,24 +80,44 @@ const DriverPicker = () => {
               variant="f1bold"
               fontSize={17}
               sx={{
-                '@media (min-width:550px)': {
+                '@media (min-width:850px)': {
                   fontSize: '40px'
                 }
               }}
             >
               {schedule.raceName}
             </Typography>
-            <Stack alignItems={'center'} justifyContent={'space-between'}>
-              <CountdownClock
-                targetDate={
-                  schedule
-                    ? new Date(
-                        `${schedule.Qualifying.date}T${schedule.Qualifying.time}`
-                      )
-                    : new Date()
+            <Stack direction={'column'} alignItems={'center'}      sx={{
+                '@media (min-width:850px)': {
+                  flexDirection:'row'
                 }
-              />
-              {/* <Typography variant={'f1'}>Until Qualifying</Typography> */}
+              }}>
+              <Stack direction={'column'} alignItems={'center'}>
+                <Typography variant={'f1bold'} fontSize={14}>Until Qualifying</Typography>
+
+                <CountdownClock
+                  targetDate={
+                    schedule
+                      ? new Date(
+                          `${schedule.Qualifying.date}T${schedule.Qualifying.time}`
+                        )
+                      : new Date()
+                  }
+                />
+              </Stack>
+              <Stack direction={'column'} alignItems={'center'}>
+                <Typography variant={'f1bold'} fontSize={14}>Until Race</Typography>
+
+                <CountdownClock
+                  targetDate={
+                    schedule
+                      ? new Date(
+                          `${schedule.date}T${schedule.time}`
+                        )
+                      : new Date()
+                  }
+                />
+              </Stack>
             </Stack>
           </Stack>
           <Grid justifyContent={'center'} container spacing={0}>
