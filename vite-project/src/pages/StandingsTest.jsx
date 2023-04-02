@@ -10,18 +10,26 @@ import { groupBy } from 'lodash';
 
 function StandingsTest() {
   const [picks, setPicks] = useState([])
-  const [scores, setScores] = useState([]);
+  const [raceResults, setRaceResults] = useState([]);
 
   useEffect(()=> { 
+    const fetchData = async () => { 
     const getPicks = async () => {
       const data = await query(getDocs(collection(db, 'picks')))
       setPicks(data.docs.map((doc)=>({...doc.data(), id: doc.id })))
     };
+    const resultsResponse = await axios.get (
+      'https://ergast.com/api/f1/current/results.json?limit=1000'
+    )
+    setRaceResults(resultsResponse.data.MRData.RaceTable.Races)
       getPicks()
+    }
+    fetchData();
   },[])
 
   const data = groupBy(picks, pick => pick.userId )
   console.log(data)
+  console.log(raceResults)
 
   useEffect(() => {
     axios.get('https://ergast.com/api/f1/current/results.json')
@@ -58,7 +66,7 @@ function StandingsTest() {
               // newScores.push({ userId: userId, points: totalPoints });
             });
 
-            setScores(newScores);
+            // setResults(newScores);
           })
           .catch(error => console.log(error));
       })
@@ -71,9 +79,10 @@ function StandingsTest() {
   ];
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid rows={scores} columns={columns} sortModel={[{ field: 'points', sort: 'desc' }]} />
-    </div>
+    <h1>sup</h1>
+    // <div style={{ height: 400, width: '100%' }}>
+    //   <DataGrid rows={scores} columns={columns} sortModel={[{ field: 'points', sort: 'desc' }]} />
+    // </div>
   );
 }
 
