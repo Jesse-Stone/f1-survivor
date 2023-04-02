@@ -5,18 +5,19 @@ import { useState } from 'react';
 const DriverDialog = (props) => {
   const {
     onClose,
-    selectedValue,
     open,
     race,
     color,
     firstName,
     team,
-    lastName
+    lastName,
+    driverId
   } = props;
   const [loaded, setLoaded] = useState(false);
+  const [pick, setPick] = useState([race,driverId])
 
   const handleClose = () => {
-    onClose(selectedValue);
+    onClose(pick);
   };
 
   return (
@@ -74,6 +75,8 @@ const DriverDialog = (props) => {
             <Button variant={'contained'} sx={{ fontFamily: 'profile2' }}>
               Confirm
             </Button>
+            {console.log(pick)}
+
           </Stack>
         </Dialog>
       )}

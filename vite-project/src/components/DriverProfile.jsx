@@ -112,7 +112,7 @@ const DriverProfile = ({ driver, points, position, race, qualifying, pickLocked 
             <Typography variant="profile2" color="text.secondary" fontSize={14}>
               {team.name}
             </Typography>
-            {qualifying && (
+            {/* {qualifying && (
               <Stack direction={'row'} mt={1} mb={-2}>
                 <Typography color="text.secondary" fontSize={14}>
                   Q:{qualifying}
@@ -121,7 +121,7 @@ const DriverProfile = ({ driver, points, position, race, qualifying, pickLocked 
                 {toOrdinalSuffix(qualifying)}
                 </Typography>
               </Stack>
-            )}
+            )} */}
 
             <Stack>
               <Box
@@ -166,6 +166,7 @@ const DriverProfile = ({ driver, points, position, race, qualifying, pickLocked 
         open={open}
         color={team.color}
         flag={flag}
+        driverId={driverId}
         team={team.name}
         onClose={handleClose}
         driver={`${givenName} ${familyName}`}
