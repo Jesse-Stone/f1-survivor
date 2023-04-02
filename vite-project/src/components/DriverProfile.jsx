@@ -24,25 +24,25 @@ const DriverProfile = ({ driver, points, position, race, qualifying, pickLocked 
     <>
       <Stack
         id="profile-card"
-        onClick={!pickLocked ? handleDriverCardClick : console.log('pick locked')}
+        onClick={!pickLocked ? handleDriverCardClick : null}
         sx={{
           boxSizing: 'border-box',
           transition: 'all .2s ease-in-out',
           maxWidth: 250,
-          backgroundColor: pickLocked ? 'grey' : 'white',
-          opacity: pickLocked ? '.5' : '1',
+          backgroundColor: 'white',
+          opacity: pickLocked ? '.35' : '1',
           paddingRight: 1,
           paddingLeft: 1,
           margin: '12px 12px 12px 12px',
           position: 'relative',
           borderRadius: '4px',
-          boxShadow: '8px 4px 4px rgba(192,192,192,0.3)',
-          '&:hover': {
+          boxShadow: !pickLocked ? '8px 4px 4px rgba(192,192,192,0.3)' : null,
+          '&:hover': !pickLocked ? {
             outlineColor: `${team.color}`,
             outlineWidth: '7px',
             outlineStyle: 'solid',
             transform: 'scale(1.05)'
-          }
+          } : null
         }}
       >
         {driver && (

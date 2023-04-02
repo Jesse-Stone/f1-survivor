@@ -7,7 +7,6 @@ import CountdownClock from '../components/CountdownClock';
 import CircularProgress from '@mui/material/CircularProgress';
 import { db } from '../config/firebase';
 import { getDocs, collection } from 'firebase/firestore';
-import {Timestamp} from 'firebase/firestore'
 
 const DriverPicker = () => {
   const [data, setData] = useState([]);
@@ -167,9 +166,13 @@ const DriverPicker = () => {
                     (position) => position.Driver.driverId === driver.driverId
                   ).position
                 }
-                pickLocked={false}
+                pickLocked={picks.find((pick)=>pick.driverId===driver.driverId)}
+                
               />
-            ))}
+              
+             ))
+            
+            }
           </Grid>
         </>
       )}
