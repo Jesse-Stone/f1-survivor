@@ -24,7 +24,7 @@ const DriverProfile = ({ driver, points, position, race, qualifying, pickLocked 
     <>
       <Stack
         id="profile-card"
-        onClick={handleDriverCardClick}
+        onClick={!pickLocked ? handleDriverCardClick : console.log('pick locked')}
         sx={{
           boxSizing: 'border-box',
           transition: 'all .2s ease-in-out',
