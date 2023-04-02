@@ -1,23 +1,26 @@
 import Dialog from '@mui/material/Dialog';
 import { Stack, Typography, Button, Divider, Box } from '@mui/material';
 import { useState } from 'react';
+import { addDoc } from 'firebase/firestore';
+import { db } from '../config/firebase';
+import { getDocs, collection } from 'firebase/firestore';
 
 const DriverDialog = (props) => {
-  const {
-    onClose,
-    open,
-    race,
-    color,
-    firstName,
-    team,
-    lastName,
-    driverId
-  } = props;
+  const picksCollectionRef = collection(db, 'picks');
+
+  const { onClose, open, race, color, firstName, team, lastName, driverId } =
+    props;
   const [loaded, setLoaded] = useState(false);
-  const [pick, setPick] = useState([race,driverId])
+  const [pick, setPick] = useState([race, driverId]);
+  const [dialogOpen, setDialogOpen] = useState(false)
 
   const handleClose = () => {
-    onClose(pick);
+    setDialogOpen(false)
+  };
+
+  const handleSubmit = async () => {
+    await addDoc(picksCollectionRef, { race: pick[0], driverId: pick[1] });
+    onClose();
   };
 
   return (
@@ -31,16 +34,16 @@ const DriverDialog = (props) => {
             width={'300px'}
           >
             <Stack alignItems={'center'}>
-            <Typography fontSize={20} variant={'f1bold'}>
-              Driver Selection
-            </Typography>
-            <Typography fontSize={12} variant={'f1'}>
-              {race}
-            </Typography>
+              <Typography fontSize={20} variant={'f1bold'}>
+                Driver Selection
+              </Typography>
+              <Typography fontSize={12} variant={'f1'}>
+                {race}
+              </Typography>
             </Stack>
 
             <Stack justifyContent={'center'} alignItems={'center'}>
-              <Divider width={'100%'}/>
+              <Divider width={'100%'} />
 
               <Stack
                 direction={'row'}
@@ -70,13 +73,15 @@ const DriverDialog = (props) => {
                   {team}
                 </Typography>
               </Stack>
-              <Divider width={'100%'}/>
+              <Divider width={'100%'} />
             </Stack>
-            <Button variant={'contained'} sx={{ fontFamily: 'profile2' }}>
+            <Button
+              variant={'contained'}
+              onClick={handleSubmit}
+              sx={{ fontFamily: 'profile2' }}
+            >
               Confirm
             </Button>
-            {console.log(pick)}
-
           </Stack>
         </Dialog>
       )}

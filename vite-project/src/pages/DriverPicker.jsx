@@ -79,7 +79,7 @@ const DriverPicker = () => {
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [picks]);
 
   // const groupedData = data.reduce((acc, race) => {
   //   race.Results.forEach((result) => {
