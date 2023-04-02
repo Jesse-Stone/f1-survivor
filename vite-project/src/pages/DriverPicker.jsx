@@ -36,13 +36,22 @@ const DriverPicker = () => {
       const getPicks = async () => {
         try {
           const data = await getDocs(picksCollectionRef);
-          const filteredData = data.docs.map((doc)=> ({...doc.data(), id: doc.id}))
-          setPicks(filteredData)
+          const filteredData = data.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id
+          }));
+          setPicks(filteredData);
         } catch (err) {
           console.log(err);
         }
       };
-      getPicks()
+      const promises = [
+        response,
+        scheduleResponse,
+        qualifyingResponse,
+        getPicks()
+      ];
+      await Promise.all(promises);
       setLoading(false);
     };
     fetchData();
@@ -68,6 +77,10 @@ const DriverPicker = () => {
     ...sortedData.find((item2) => item2.driver === item1.driverId)
   }));
 
+  const shouldLockPick = (pick, date) => {
+    return new Date(`${pick.date}T${pick.time}`) <= new Date(date)
+  }
+
   return (
     <>
       {loading && (
@@ -78,7 +91,7 @@ const DriverPicker = () => {
 
       {!loading && (
         <>
-        {console.log(picks)}
+          {console.log(picks)}
           <Stack
             justifyContent={'center'}
             flexDirection={'column'}
@@ -145,6 +158,7 @@ const DriverPicker = () => {
               </Stack>
             </Stack>
           </Stack>
+          {console.log(new Date(`${schedule.Qualifying.date}T${schedule.Qualifying.time}`) <= new Date())}
           <Grid justifyContent={'center'} container spacing={0}>
             {driversData.Drivers.map((driver) => (
               <DriverProfile
@@ -166,13 +180,11 @@ const DriverPicker = () => {
                     (position) => position.Driver.driverId === driver.driverId
                   ).position
                 }
-                pickLocked={picks.find((pick)=>pick.driverId===driver.driverId)}
-                
+                pickLocked={picks.find(
+                  (pick) => pick.driverId === driver.driverId
+                )}
               />
-              
-             ))
-            
-            }
+            ))}
           </Grid>
         </>
       )}
