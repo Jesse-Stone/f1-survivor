@@ -20,13 +20,14 @@ const DriverDialog = (props) => {
 
   const handleSubmit = async () => {
     await addDoc(picksCollectionRef, { race: pick[0], driverId: pick[1] });
+    window.location.reload(false);
     onClose();
   };
 
   return (
     <>
       {loaded ? null : (
-        <Dialog onClose={handleClose} open={open}>
+        <Dialog onClose={onClose} open={open}>
           <Stack
             justifyContent={'space-around'}
             alignItems={'center'}

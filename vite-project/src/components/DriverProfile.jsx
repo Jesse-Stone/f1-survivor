@@ -16,6 +16,7 @@ const DriverProfile = ({ driver, points, position, race, qualifying, pickLocked 
   };
 
   const handleClose = () => {
+    
     setOpen(false);
   };
 

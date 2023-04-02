@@ -79,7 +79,7 @@ const DriverPicker = () => {
       setLoading(false);
     };
     fetchData();
-  }, [picks]);
+  }, []);
 
   // const groupedData = data.reduce((acc, race) => {
   //   race.Results.forEach((result) => {
@@ -104,7 +104,6 @@ const DriverPicker = () => {
   const shouldLockPick = (pick, date) => {
     return new Date(`${pick.date}T${pick.time}`) <= new Date(date);
   };
-  console.log(standings);
 
   return (
     <>
@@ -192,6 +191,8 @@ const DriverPicker = () => {
                       : new Date()
                   }
                 />
+                                  {console.log(schedule.data)}
+
               </Stack>
             </Stack>
           </Stack>
