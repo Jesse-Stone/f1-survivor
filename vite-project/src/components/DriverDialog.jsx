@@ -3,7 +3,8 @@ import { Stack, Typography, Button, Divider, Box } from '@mui/material';
 import { useState } from 'react';
 import { addDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
-import { getDocs, collection } from 'firebase/firestore';
+import { getDocs, collection, query } from 'firebase/firestore';
+import { auth } from '../config/firebase';
 
 const DriverDialog = (props) => {
   const picksCollectionRef = collection(db, 'picks');
@@ -19,7 +20,7 @@ const DriverDialog = (props) => {
   };
 
   const handleSubmit = async () => {
-    await addDoc(picksCollectionRef, { race: pick[0], driverId: pick[1] });
+    await addDoc(picksCollectionRef, { race: pick[0], driverId: pick[1], userId: auth.currentUser.uid });
     window.location.reload(false);
     onClose();
   };

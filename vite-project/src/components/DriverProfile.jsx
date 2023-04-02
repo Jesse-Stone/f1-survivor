@@ -4,8 +4,15 @@ import { toOrdinalSuffix } from '../utils/utils';
 import { useState } from 'react';
 import DriverDialog from './DriverDialog';
 
-const DriverProfile = ({ driver, points, position, race, qualifying, pickLocked }) => {
-  const { givenName, familyName, flag, permanentNumber, team, driverId, } =
+const DriverProfile = ({
+  driver,
+  points,
+  position,
+  race,
+  qualifying,
+  pickLocked
+}) => {
+  const { givenName, familyName, flag, permanentNumber, team, driverId } =
     driver;
 
   const [open, setOpen] = useState(false);
@@ -16,7 +23,6 @@ const DriverProfile = ({ driver, points, position, race, qualifying, pickLocked 
   };
 
   const handleClose = () => {
-    
     setOpen(false);
   };
 
@@ -37,12 +43,14 @@ const DriverProfile = ({ driver, points, position, race, qualifying, pickLocked 
           position: 'relative',
           borderRadius: '4px',
           boxShadow: !pickLocked ? '8px 4px 4px rgba(192,192,192,0.3)' : null,
-          '&:hover': !pickLocked ? {
-            outlineColor: `${team.color}`,
-            outlineWidth: '7px',
-            outlineStyle: 'solid',
-            transform: 'scale(1.05)'
-          } : null
+          '&:hover': !pickLocked
+            ? {
+                outlineColor: `${team.color}`,
+                outlineWidth: '7px',
+                outlineStyle: 'solid',
+                transform: 'scale(1.05)'
+              }
+            : null
         }}
       >
         {driver && (
@@ -112,17 +120,16 @@ const DriverProfile = ({ driver, points, position, race, qualifying, pickLocked 
             <Typography variant="profile2" color="text.secondary" fontSize={14}>
               {team.name}
             </Typography>
-            {/* {qualifying && (
+            {qualifying && (
               <Stack direction={'row'} mt={1} mb={-2}>
                 <Typography color="text.secondary" fontSize={14}>
                   Q:{qualifying}
                 </Typography>
                 <Typography color="text.secondary" fontSize={14}>
-                {toOrdinalSuffix(qualifying)}
+                  {toOrdinalSuffix(qualifying)}
                 </Typography>
               </Stack>
-            )} */}
-
+            )}
             <Stack>
               <Box
                 component={'img'}

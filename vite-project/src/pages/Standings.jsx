@@ -9,7 +9,7 @@ const Standings = () => {
         alignItems={'center'}
       >
         <Typography
-          variant="profile"
+          variant="f1"
           fontSize={30}
           sx={{
             '@media (min-width:550px)': {
@@ -19,6 +19,7 @@ const Standings = () => {
         >
           STANDINGS
         </Typography>
+        
       </Stack>
     </>
   );

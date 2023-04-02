@@ -9,7 +9,7 @@ const Home = () => {
         alignItems={'center'}
       >
         <Typography
-          variant="profile"
+          variant="f1"
           fontSize={30}
           sx={{
             '@media (min-width:850px)': {

@@ -6,10 +6,10 @@ import axios from 'axios';
 import CountdownClock from '../components/CountdownClock';
 import CircularProgress from '@mui/material/CircularProgress';
 import { db } from '../config/firebase';
-import { getDocs, collection } from 'firebase/firestore';
+import { getDocs, collection, query, where } from 'firebase/firestore';
+import { auth } from '../config/firebase';
 
 const DriverPicker = () => {
-  const [data, setData] = useState([]);
   const [standings, setStandings] = useState([]);
   const [schedule, setSchedule] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,10 +20,6 @@ const DriverPicker = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // const response = await axios.get(
-      //   'https://ergast.com/api/f1/2023/results.json'
-      // );
-      // setData(response.data.MRData.RaceTable.Races);
       const standingsResponse = await axios.get(
         'https://ergast.com/api/f1/current/driverStandings.json'
       );
@@ -38,11 +34,6 @@ const DriverPicker = () => {
       const qualifyingResponse = await axios
         .get('https://ergast.com/api/f1/current/next/qualifying.json')
         .then((response) => {
-          // response.data.MRData.RaceTable.Races[0].QualifyingResults
-          //   ? setQualResults(
-          //       response.data.MRData.RaceTable.Races[0].QualifyingResults
-          //     )
-          //   : setQualResults([]);
           if (response.data.MRData.RaceTable.Races[0].QualifyingResults) {
             setQualResults(
               response.data.MRData.RaceTable.Races[0].QualifyingResults
@@ -52,13 +43,14 @@ const DriverPicker = () => {
           }
         })
         .catch((error) => setQualResults(null));
-      // qualifyingResponse.data.MRData.RaceTable.Races[0].QualifyingResults ?
-
-      // setQualResults(qualifyingResponse.data.MRData.RaceTable.Races[0].QualifyingResults
-      // ) : setQualResults([])
       const getPicks = async () => {
         try {
-          const data = await getDocs(picksCollectionRef);
+          const data = await getDocs(
+            query(
+              picksCollectionRef,
+              where('userId', '==', auth.currentUser.uid)
+            )
+          );
           const filteredData = data.docs.map((doc) => ({
             ...doc.data(),
             id: doc.id
@@ -69,7 +61,6 @@ const DriverPicker = () => {
         }
       };
       const promises = [
-        // response,
         scheduleResponse,
         qualifyingResponse,
         standingsResponse,
@@ -80,26 +71,6 @@ const DriverPicker = () => {
     };
     fetchData();
   }, []);
-
-  // const groupedData = data.reduce((acc, race) => {
-  //   race.Results.forEach((result) => {
-  //     const driver = result.Driver.driverId;
-  //     if (!acc[driver]) {
-  //       acc[driver] = { driver, points: 0 };
-  //     }
-  //     acc[driver].points += parseInt(result.points);
-  //   });
-  //   return acc;
-  // }, {});
-
-  // const sortedData = Object.values(groupedData).sort(
-  //   (a, b) => b.points - a.points
-  // );
-
-  // const joinedArray = driversData.Drivers.map((item1) => ({
-  //   ...item1,
-  //   ...sortedData.find((item2) => item2.driver === item1.driverId)
-  // }));
 
   const shouldLockPick = (pick, date) => {
     return new Date(`${pick.date}T${pick.time}`) <= new Date(date);
@@ -115,7 +86,7 @@ const DriverPicker = () => {
 
       {!loading && (
         <>
-          {/* {console.log(picks)} */}
+          {console.log(picks)}
           <Stack
             justifyContent={'center'}
             flexDirection={'column'}
@@ -144,7 +115,6 @@ const DriverPicker = () => {
               {schedule.raceName}
             </Typography>
             <Stack
-              // alignItems={'center'}
               sx={{
                 '@media (min-width:850px)': {
                   flexDirection: 'row',
@@ -191,31 +161,18 @@ const DriverPicker = () => {
                       : new Date()
                   }
                 />
-                                  {console.log(schedule.data)}
-
               </Stack>
             </Stack>
           </Stack>
-          {/* {console.log(new Date(`${schedule.Qualifying.date}T${schedule.Qualifying.time}`) <= new Date())} */}
           <Grid justifyContent={'center'} container spacing={0}>
             {driversData.Drivers.map((driver) => (
               <DriverProfile
                 key={driver.driverId}
                 driver={driver}
-                // points={
-                //   joinedArray.find(
-                //     (result) => result.driverId === driver.driverId
-                //   ).points
-                // }
                 points={
                   standings.find((s) => s.Driver.driverId === driver.driverId)
                     .points
                 }
-                // position={
-                //   sortedData.findIndex(
-                //     (obj) => obj.driver === driver.driverId
-                //   ) + 1
-                // }
                 position={
                   standings.find((s) => s.Driver.driverId === driver.driverId)
                     .position

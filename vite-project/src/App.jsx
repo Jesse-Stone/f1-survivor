@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import DriverPicker from './pages/DriverPicker';
 import Home from './pages/Home';
 import Standings from './pages/Standings';
+import StandingsTest from './pages/StandingsTest';
 import Login from './pages/Login';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -24,7 +25,7 @@ const App = () => {
           {user && (
             <>
               <Route path="/home" Component={Home} exact></Route>
-              <Route path="/standings" Component={Standings} exact></Route>
+              <Route path="/standings" Component={StandingsTest} exact></Route>
               <Route path="/makepicks" Component={DriverPicker} exact></Route>
             </>
           )}
