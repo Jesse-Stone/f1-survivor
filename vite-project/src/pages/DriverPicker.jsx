@@ -5,7 +5,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CountdownClock from '../components/CountdownClock';
 import CircularProgress from '@mui/material/CircularProgress';
-import {db} from '../config/firebase'
+import { db } from '../config/firebase';
+import { getDocs, collection } from 'firebase/firestore';
+import {Timestamp} from 'firebase/firestore'
 
 const DriverPicker = () => {
   const [data, setData] = useState([]);
@@ -14,9 +16,7 @@ const DriverPicker = () => {
   const [qualResults, setQualResults] = useState(null);
   const [picks, setPicks] = useState([]);
 
-  const getPicks = async () => {
-
-  }
+  const picksCollectionRef = collection(db, 'picks');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,6 +34,16 @@ const DriverPicker = () => {
       setQualResults(
         qualifyingResponse.data.MRData.RaceTable.Races[0].QualifyingResults
       );
+      const getPicks = async () => {
+        try {
+          const data = await getDocs(picksCollectionRef);
+          const filteredData = data.docs.map((doc)=> ({...doc.data(), id: doc.id}))
+          setPicks(filteredData)
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      getPicks()
       setLoading(false);
     };
     fetchData();
@@ -69,6 +79,7 @@ const DriverPicker = () => {
 
       {!loading && (
         <>
+        {console.log(picks)}
           <Stack
             justifyContent={'center'}
             flexDirection={'column'}
@@ -156,9 +167,9 @@ const DriverPicker = () => {
                     (position) => position.Driver.driverId === driver.driverId
                   ).position
                 }
+                pickLocked={false}
               />
             ))}
-            ]{' '}
           </Grid>
         </>
       )}

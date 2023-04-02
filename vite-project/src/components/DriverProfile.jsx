@@ -4,8 +4,8 @@ import { toOrdinalSuffix } from '../utils/utils';
 import { useState } from 'react';
 import DriverDialog from './DriverDialog';
 
-const DriverProfile = ({ driver, points, position, race, qualifying }) => {
-  const { givenName, familyName, flag, permanentNumber, team, driverId } =
+const DriverProfile = ({ driver, points, position, race, qualifying, pickLocked }) => {
+  const { givenName, familyName, flag, permanentNumber, team, driverId, } =
     driver;
 
   const [open, setOpen] = useState(false);
@@ -22,7 +22,6 @@ const DriverProfile = ({ driver, points, position, race, qualifying }) => {
 
   return (
     <>
-      {/* {!qualifying && <h1>loading</h1>} */}
       <Stack
         id="profile-card"
         onClick={handleDriverCardClick}
@@ -30,7 +29,8 @@ const DriverProfile = ({ driver, points, position, race, qualifying }) => {
           boxSizing: 'border-box',
           transition: 'all .2s ease-in-out',
           maxWidth: 250,
-          backgroundColor: 'white',
+          backgroundColor: pickLocked ? 'grey' : 'white',
+          opacity: pickLocked ? '.5' : '1',
           paddingRight: 1,
           paddingLeft: 1,
           margin: '12px 12px 12px 12px',
