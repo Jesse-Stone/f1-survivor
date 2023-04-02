@@ -2,11 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { db } from '../config/firebase';
 import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
-import { getDocs, collection, query, where } from 'firebase/firestore';
+import { getDocs, collection, query, where} from 'firebase/firestore';
+
+import { groupBy } from 'lodash';
+
 
 
 function StandingsTest() {
+  const [picks, setPicks] = useState([])
   const [scores, setScores] = useState([]);
+
+  useEffect(()=> { 
+    const getPicks = async () => {
+      const data = await query(getDocs(collection(db, 'picks')))
+      setPicks(data.docs.map((doc)=>({...doc.data(), id: doc.id })))
+    };
+      getPicks()
+  },[])
+
+  const data = groupBy(picks, pick => pick.userId )
+  console.log(data)
 
   useEffect(() => {
     axios.get('https://ergast.com/api/f1/current/results.json')
