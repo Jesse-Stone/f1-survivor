@@ -1,16 +1,22 @@
-import { Grid, Stack, Typography, } from '@mui/material';
+import { Grid, Stack, Typography } from '@mui/material';
 import DriverProfile from '../components/DriverProfile';
 import driversData from '../data/driversData';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CountdownClock from '../components/CountdownClock';
 import CircularProgress from '@mui/material/CircularProgress';
+import {db} from '../config/firebase'
 
 const DriverPicker = () => {
   const [data, setData] = useState([]);
   const [schedule, setSchedule] = useState([]);
   const [loading, setLoading] = useState(true);
   const [qualResults, setQualResults] = useState(null);
+  const [picks, setPicks] = useState([]);
+
+  const getPicks = async () => {
+
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,9 +61,6 @@ const DriverPicker = () => {
 
   return (
     <>
-      {console.log(schedule)}
-      {console.log(qualResults)}
-
       {loading && (
         <Stack justifyContent={'center'} alignItems={'center'} height={'80vh'}>
           <CircularProgress sx={{ height: '500px', width: '500px' }} />
@@ -153,10 +156,9 @@ const DriverPicker = () => {
                     (position) => position.Driver.driverId === driver.driverId
                   ).position
                 }
-                // qualifying={30}
               />
             ))}
-            {/* {console.log(qualResults.find((position) => position.Driver.driverId === 'russell').position)} */}
+            ]{' '}
           </Grid>
         </>
       )}
