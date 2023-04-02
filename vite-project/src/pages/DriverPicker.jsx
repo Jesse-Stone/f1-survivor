@@ -1,4 +1,4 @@
-import { Grid, Stack, Typography } from '@mui/material';
+import { Divider, Grid, Stack, Typography } from '@mui/material';
 import DriverProfile from '../components/DriverProfile';
 import driversData from '../data/driversData';
 import React, { useEffect, useState } from 'react';
@@ -120,19 +120,18 @@ const DriverPicker = () => {
               {schedule.raceName}
             </Typography>
             <Stack
-              direction={'column'}
               alignItems={'center'}
               sx={{
                 '@media (min-width:850px)': {
-                  flexDirection: 'row'
+                  flexDirection: 'row',
+                  margin:'30px'
                 }
               }}
             >
-              <Stack direction={'column'} alignItems={'center'}>
+              <Stack alignItems={'center'}>
                 <Typography variant={'f1bold'} fontSize={14}>
                   Until Qualifying
                 </Typography>
-
                 <CountdownClock
                   targetDate={
                     schedule
@@ -143,7 +142,13 @@ const DriverPicker = () => {
                   }
                 />
               </Stack>
-              <Stack direction={'column'} alignItems={'center'}>
+              <Stack>
+                <Divider orientation='vertical' sx={{backgroundColor:'#FF1801', height:'0px', '@media (min-width:850px)': {
+                  height:'100px',
+                  width:'2px'
+                }}}/>
+              </Stack>
+              <Stack alignItems={'center'}>
                 <Typography variant={'f1bold'} fontSize={14}>
                   Until Race
                 </Typography>
@@ -155,6 +160,7 @@ const DriverPicker = () => {
                       : new Date()
                   }
                 />
+                
               </Stack>
             </Stack>
           </Stack>

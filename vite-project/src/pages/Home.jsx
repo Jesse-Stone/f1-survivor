@@ -12,7 +12,7 @@ const Home = () => {
           variant="profile"
           fontSize={30}
           sx={{
-            '@media (min-width:550px)': {
+            '@media (min-width:850px)': {
               fontSize: '60px'
             }
           }}

@@ -8,9 +8,7 @@ const DriverDialog = (props) => {
     selectedValue,
     open,
     race,
-    driver,
     color,
-    flag,
     firstName,
     team,
     lastName

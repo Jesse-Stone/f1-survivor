@@ -3,10 +3,8 @@ import {
   AppBar,
   IconButton,
   Toolbar,
-  Typography,
   Drawer,
   Stack,
-  Box
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
@@ -41,15 +39,7 @@ const NavBar = () => {
   });
 
   return (
-    <Stack
-      id="navbar"
-      // sx={{
-      //   margin: '50px',
-      //   '@media (min-width:550px)': {
-      //     margin: '0px'
-      //   },
-      // }}
-    >
+    <Stack id="navbar">
       <AppBar position="fixed" color="transparent" elevation={0}>
         <Toolbar>
           <IconButton
@@ -69,7 +59,7 @@ const NavBar = () => {
         PaperProps={{
           sx: {
             width: '50%',
-            '@media (min-width:550px)': {
+            '@media (min-width:850px)': {
               width: '200px'
             },
             background: 'rgba(0,0,0,.8)'

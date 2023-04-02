@@ -38,7 +38,7 @@ const Login = () => {
             variant="f1bold"
             fontSize={40}
             sx={{
-              '@media (min-width:550px)': {
+              '@media (min-width:850px)': {
                 fontSize: '75px'
               }
             }}
@@ -49,7 +49,7 @@ const Login = () => {
             variant="f1"
             fontSize={30}
             sx={{
-              '@media (min-width:550px)': {
+              '@media (min-width:850px)': {
                 fontSize: '45px'
               }
             }}
