@@ -30,7 +30,7 @@ const theme = createTheme({
     primary: {
       main: '#FF1801'
     }
-  }
+  },
 });
 
 export default theme;

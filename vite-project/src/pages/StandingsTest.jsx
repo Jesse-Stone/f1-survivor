@@ -29,10 +29,7 @@ function StandingsTest() {
         'https://ergast.com/api/f1/current/results.json?limit=1000'
       );
       setRaceResults(resultsResponse.data.MRData.RaceTable.Races);
-      const promises = [
-        resultsResponse,
-        getPicks()
-      ];
+      const promises = [resultsResponse, getPicks()];
       await Promise.all(promises);
       setLoading(false);
     };
@@ -87,7 +84,7 @@ function StandingsTest() {
           <Typography
             variant="f1"
             fontSize={30}
-            mb={20}
+            mb={10}
             sx={{
               '@media (min-width:550px)': {
                 fontSize: '60px'
@@ -101,20 +98,31 @@ function StandingsTest() {
             <Table sx={{ minWidth: 250 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell>Player</TableCell>
-                  <TableCell align="right">Points</TableCell>
+                  <TableCell sx={{ fontFamily: 'f1bold' }}>Player</TableCell>
+                  <TableCell sx={{ fontFamily: 'f1bold' }} align="right">
+                    Points
+                  </TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody>
+              <TableBody sx={{ fontFamily: 'f1bold' }}>
                 {userPointsArray.map((row) => (
                   <TableRow
                     key={row.id}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    sx={{
+                      fontFamily: 'f1',
+                      '&:last-child td, &:last-child th': { border: 0 }
+                    }}
                   >
-                    <TableCell component="th" scope="row">
+                    <TableCell
+                      sx={{ fontFamily: 'f1' }}
+                      component="th"
+                      scope="row"
+                    >
                       {row.id}
                     </TableCell>
-                    <TableCell align="right">{row.points}</TableCell>
+                    <TableCell sx={{ fontFamily: 'f1' }} align="right">
+                      {row.points}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
