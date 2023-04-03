@@ -8,6 +8,8 @@ import { getDocs, collection, query } from 'firebase/firestore';
 
 
 import { groupBy } from 'lodash';
+import { Stack } from '@mui/system';
+import { Typography } from '@mui/material';
 
 function StandingsTest() {
   const [picks, setPicks] = useState([]);
@@ -66,7 +68,19 @@ for(let i in userPointsArray) {
   ];
 
   return (
-    <div style={{ height: 400, width: '50%' }}>
+    <Stack alignItems={'center'} justifyContent={'center'}>
+        <Typography
+          variant="f1"
+          fontSize={30}
+          mb={20}
+          sx={{
+            '@media (min-width:550px)': {
+              fontSize: '60px'
+            }
+          }}
+        >
+          STANDINGS
+        </Typography>
       <DataGrid
         rows={userPointsArray}
         columns={columns}
@@ -78,7 +92,7 @@ for(let i in userPointsArray) {
         style={{ color: 'white' }}
         labelRowsPerPage={""}
       />
-    </div>
+    </Stack>
   );
 }
 
