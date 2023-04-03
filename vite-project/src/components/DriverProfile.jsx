@@ -10,7 +10,8 @@ const DriverProfile = ({
   position,
   race,
   qualifying,
-  pickLocked
+  pickLocked,
+  currentRacePick
 }) => {
   const { givenName, familyName, flag, permanentNumber, team, driverId } =
     driver;
@@ -130,6 +131,14 @@ const DriverProfile = ({
                 </Typography>
               </Stack>
             )}
+            {currentRacePick && (
+              <Stack direction={'row'} mb={-2} backgroundColor={'green'} justifyContent={'center'}width={'40%'} borderRadius={2}>
+                <Typography color="white" fontSize={10}>
+                  Current Pick
+                </Typography>
+              </Stack>
+            )}
+
             <Stack>
               <Box
                 component={'img'}

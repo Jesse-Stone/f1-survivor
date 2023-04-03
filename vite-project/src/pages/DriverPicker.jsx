@@ -187,6 +187,7 @@ const DriverPicker = () => {
                 pickLocked={picks.find(
                   (pick) => pick.driverId === driver.driverId
                 )}
+                currentRacePick={true}
               />
             ))}
           </Grid>
