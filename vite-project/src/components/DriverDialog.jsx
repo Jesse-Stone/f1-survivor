@@ -20,7 +20,7 @@ const DriverDialog = (props) => {
   };
 
   const handleSubmit = async () => {
-    await addDoc(picksCollectionRef, { race: pick[0], driverId: pick[1], userId: auth.currentUser.uid });
+    await addDoc(picksCollectionRef, { race: pick[0], driverId: pick[1], userId: auth.currentUser.uid, name: auth.currentUser.displayName });
     window.location.reload(false);
     onClose();
   };

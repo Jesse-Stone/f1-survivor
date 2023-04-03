@@ -4,6 +4,9 @@ import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
 import { getDocs, collection, query } from 'firebase/firestore';
 
+
+
+
 import { groupBy } from 'lodash';
 
 function StandingsTest() {
@@ -25,11 +28,11 @@ function StandingsTest() {
     fetchData();
   }, []);
 
-  const groupedData = groupBy(picks, (pick) => pick.userId);
+  const groupedData = groupBy(picks, (pick) => pick.name);
   const userPoints = {};
 
-  for (let userId in groupedData) {
-    const racePicks = groupedData[userId];
+  for (let name in groupedData) {
+    const racePicks = groupedData[name];
     for (let i = 0; i < racePicks.length; i++) {
       const { driverId, race } = racePicks[i];
       const raceResult = raceResults.find((result) => result.raceName === race);
@@ -38,10 +41,10 @@ function StandingsTest() {
           (result) => result.Driver.driverId === driverId
         );
         if (result) {
-          if (!userPoints[userId]) {
-            userPoints[userId] = 0;
+          if (!userPoints[name]) {
+            userPoints[name] = 0;
           }
-          userPoints[userId] += parseInt(result.points);
+          userPoints[name] += parseInt(result.points);
         }
       }
     }
@@ -49,12 +52,17 @@ function StandingsTest() {
 
   const userPointsArray = Object.entries(userPoints).map(([id, points]) => ({
     id,
-    points
+    points,
   }));
+
+for(let i in userPointsArray) {
+  console.log(userPointsArray[i].id)
+}
+
 
   const columns = [
     { field: 'id', headerName: 'Player', width: 250 },
-    { field: 'points', headerName: 'Points', width: 150 }
+    { field: 'points', headerName: 'Points', width: 150 },
   ];
 
   return (
@@ -64,7 +72,6 @@ function StandingsTest() {
         columns={columns}
         width={'30%'}
         sortModel={[{ field: 'points', sort: 'desc' }]}
-        pagination ={false}
         rowsPerPageOptions={10}
         autoHeight
         sortable={false}
