@@ -2,87 +2,76 @@ import React, { useState, useEffect } from 'react';
 import { db } from '../config/firebase';
 import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
-import { getDocs, collection, query, where} from 'firebase/firestore';
+import { getDocs, collection, query } from 'firebase/firestore';
 
 import { groupBy } from 'lodash';
 
-
-
 function StandingsTest() {
-  const [picks, setPicks] = useState([])
+  const [picks, setPicks] = useState([]);
   const [raceResults, setRaceResults] = useState([]);
 
-  useEffect(()=> { 
-    const fetchData = async () => { 
-    const getPicks = async () => {
-      const data = await query(getDocs(collection(db, 'picks')))
-      setPicks(data.docs.map((doc)=>({...doc.data(), id: doc.id })))
-    };
-    const resultsResponse = await axios.get (
-      'https://ergast.com/api/f1/current/results.json?limit=1000'
-    )
-    setRaceResults(resultsResponse.data.MRData.RaceTable.Races)
-      getPicks()
-    }
-    fetchData();
-  },[])
-
-  const data = groupBy(picks, pick => pick.userId )
-  console.log(data)
-  console.log(raceResults)
-
   useEffect(() => {
-    axios.get('https://ergast.com/api/f1/current/results.json')
-      .then(response => {
-        const races = response.data.MRData.RaceTable.Races;
-        const newScores = [];
-
-
-        getDocs(collection(db, 'picks'))
-          .then(snapshot => {
-            snapshot.docs.forEach(doc => {
-              const userId = doc.data().userId
-              const picks = doc.data().driverId;
-
-
-
-
-              // let totalPoints = 0;
-              // picks.forEach(pick => {
-              //   const raceId = pick.raceId;
-              //   const driverId = pick.driverId;
-              //   const race = races.find(race => race.Circuit.circuitId === raceId);
-
-              //   if (race) {
-              //     const results = race.Results;
-              //     const result = results.find(result => result.Driver.driverId === driverId);
-                  
-              //     if (result) {
-              //       totalPoints += result.points;
-              //     }
-              //   }
-              // });
-
-              // newScores.push({ userId: userId, points: totalPoints });
-            });
-
-            // setResults(newScores);
-          })
-          .catch(error => console.log(error));
-      })
-      .catch(error => console.log(error));
+    const fetchData = async () => {
+      const getPicks = async () => {
+        const data = await query(getDocs(collection(db, 'picks')));
+        setPicks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      };
+      const resultsResponse = await axios.get(
+        'https://ergast.com/api/f1/current/results.json?limit=1000'
+      );
+      setRaceResults(resultsResponse.data.MRData.RaceTable.Races);
+      getPicks();
+    };
+    fetchData();
   }, []);
 
+  const groupedData = groupBy(picks, (pick) => pick.userId);
+  const userPoints = {};
+
+  for (let userId in groupedData) {
+    const racePicks = groupedData[userId];
+    for (let i = 0; i < racePicks.length; i++) {
+      const { driverId, race } = racePicks[i];
+      const raceResult = raceResults.find((result) => result.raceName === race);
+      if (raceResult) {
+        const result = raceResult.Results.find(
+          (result) => result.Driver.driverId === driverId
+        );
+        if (result) {
+          if (!userPoints[userId]) {
+            userPoints[userId] = 0;
+          }
+          userPoints[userId] += parseInt(result.points);
+        }
+      }
+    }
+  }
+
+  const userPointsArray = Object.entries(userPoints).map(([id, points]) => ({
+    id,
+    points
+  }));
+
   const columns = [
-    { field: 'userId', headerName: 'User ID', width: 150 },
-    { field: 'points', headerName: 'Points', width: 150 },
+    { field: 'id', headerName: 'Player', width: 250 },
+    { field: 'points', headerName: 'Points', width: 150 }
   ];
 
   return (
-    <h1>sup</h1>
-    // <div style={{ height: 400, width: '100%' }}>
-    //   <DataGrid rows={scores} columns={columns} sortModel={[{ field: 'points', sort: 'desc' }]} />
-    // </div>
+    <div style={{ height: 400, width: '50%' }}>
+      <DataGrid
+        rows={userPointsArray}
+        columns={columns}
+        width={'30%'}
+        sortModel={[{ field: 'points', sort: 'desc' }]}
+        pagination ={false}
+        rowsPerPageOptions={10}
+        autoHeight
+        sortable={false}
+        style={{ color: 'white' }}
+        labelRowsPerPage={""}
+      />
+    </div>
   );
 }
 
