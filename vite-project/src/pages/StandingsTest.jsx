@@ -13,6 +13,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
 function StandingsTest() {
   const [picks, setPicks] = useState([]);
@@ -61,11 +62,7 @@ function StandingsTest() {
   const userPointsArray = Object.entries(userPoints).map(([id, points]) => ({
     id,
     points
-  }));
-
-  for (let i in userPointsArray) {
-    console.log(userPointsArray[i].id);
-  }
+  })).sort((a,b)=> b.points - a.points);
 
   const columns = [
     { field: 'id', headerName: 'Player', width: 250 },
@@ -93,11 +90,13 @@ function StandingsTest() {
           >
             STANDINGS
           </Typography>
+          {console.log(userPointsArray)}
 
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 250 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
+                  <TableCell sx={{ fontFamily: 'f1bold' }}>Rank</TableCell>
                   <TableCell sx={{ fontFamily: 'f1bold' }}>Player</TableCell>
                   <TableCell sx={{ fontFamily: 'f1bold' }} align="right">
                     Points
@@ -105,7 +104,7 @@ function StandingsTest() {
                 </TableRow>
               </TableHead>
               <TableBody sx={{ fontFamily: 'f1bold' }}>
-                {userPointsArray.map((row) => (
+                {userPointsArray.map((row, index) => (
                   <TableRow
                     key={row.id}
                     sx={{
@@ -113,13 +112,19 @@ function StandingsTest() {
                       '&:last-child td, &:last-child th': { border: 0 }
                     }}
                   >
-                    <TableCell
-                      sx={{ fontFamily: 'f1' }}
-                      component="th"
-                      scope="row"
-                    >
-                      {row.id}
+                    <TableCell>
+                      {index === 0 ? (
+                        <EmojiEventsIcon sx={{ color: '#FFD700' }} />
+                      ) : index === 1 ? (
+                        <EmojiEventsIcon sx={{color:"#C0C0C0"}} />
+                      ) : index === 2 ? (
+                        <EmojiEventsIcon sx={{color:"#CD7F32"}} />
+                      ) : (
+                        index + 1
+                      )}
                     </TableCell>
+                    <TableCell sx={{ fontFamily: 'f1' }}>{row.id}</TableCell>
+
                     <TableCell sx={{ fontFamily: 'f1' }} align="right">
                       {row.points}
                     </TableCell>
