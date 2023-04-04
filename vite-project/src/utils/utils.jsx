@@ -10,6 +10,9 @@ export const toOrdinalSuffix = (num) => {
 };
 
 export const timeStampToDate = (ts)=>{
+  if(ts === undefined){
+    return null
+  }
 return new Date(ts.seconds*1000 + ts.nanoseconds / 10000000);
 }
 

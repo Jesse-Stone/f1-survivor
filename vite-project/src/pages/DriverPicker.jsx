@@ -73,8 +73,13 @@ const DriverPicker = () => {
     fetchData();
   }, []);
 
-  const shouldLockPick = (pick, date) => {
-    return pick >= new Date(date);
+  // if pick doesnt exist, return false...else check that pick's qualifying time, if current timestamp is > qual time, pick is locked.
+  const shouldLockPick = (picksArr, driver) => {
+    if (picksArr.find((pick)=>pick.driverId === driver.driverId) === undefined){
+      return false;
+    }
+      return new Date() > timeStampToDate(picksArr.find((pick) => pick.driverId === driver.driverId)
+      ?.pickLockTime)
   };
 
   return (
@@ -87,7 +92,6 @@ const DriverPicker = () => {
 
       {!loading && (
         <>
-          {console.log(picks)}
           <Stack
             justifyContent={'center'}
             flexDirection={'column'}
@@ -168,13 +172,7 @@ const DriverPicker = () => {
           <Grid justifyContent={'center'} container spacing={0}>
             {driversData.Drivers.map((driver) => (
               <>
-                {console.log(
-                  shouldLockPick(
-                    picks.find((pick) => pick.driverId === driver.driverId)
-                      ?.timestamp
-                  )
-                )}
-
+              {console.log(shouldLockPick(picks, driver))}
                 <DriverProfile
                   key={driver.driverId}
                   driver={driver}
@@ -193,14 +191,8 @@ const DriverPicker = () => {
                       (position) => position.Driver.driverId === driver.driverId
                     ).position
                   }
-                  // pickLocked={picks.find(
-                  //   (pick) => pick.driverId === driver.driverId
-                  // )}
-                  pickLocked = {shouldLockPick(
-                    picks.find((pick) => pick.driverId === driver.driverId)
-                      ?.timestamp
-                  ,`${schedule.Qualifying.date}T${schedule.Qualifying.time}`)}
-                  currentRacePick={true}
+                  pickLocked = {shouldLockPick(picks, driver)}                 
+                  currentRacePick={null}                
                   pickLockTime = {new Date(
                     `${schedule.Qualifying.date}T${schedule.Qualifying.time}`
                   )}
