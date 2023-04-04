@@ -9,6 +9,10 @@ export const toOrdinalSuffix = (num) => {
     : ordinals[3];
 };
 
+export const timeStampToDate = (ts)=>{
+return new Date(ts.seconds*1000 + ts.nanoseconds / 10000000);
+}
+
 // export const nextRaceDateFinder = (data) => {
 //   const dates = data.dates.map(date => new Date(date)).sort((a, b) => a - b);
 //   const currentDate = new Date();

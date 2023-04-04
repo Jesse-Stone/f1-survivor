@@ -11,7 +11,8 @@ const DriverProfile = ({
   race,
   qualifying,
   pickLocked,
-  currentRacePick
+  currentRacePick,
+  pickLockTime
 }) => {
   const { givenName, familyName, flag, permanentNumber, team, driverId } =
     driver;
@@ -188,6 +189,8 @@ const DriverProfile = ({
         driver={`${givenName} ${familyName}`}
         firstName={givenName}
         lastName={familyName}
+        currentRacePick={currentRacePick}
+        pickLockTime={pickLockTime}
       />
     </>
   );

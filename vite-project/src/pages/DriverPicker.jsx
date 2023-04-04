@@ -8,6 +8,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { db } from '../config/firebase';
 import { getDocs, collection, query, where } from 'firebase/firestore';
 import { auth } from '../config/firebase';
+import { timeStampToDate } from '../utils/utils';
 
 const DriverPicker = () => {
   const [standings, setStandings] = useState([]);
@@ -73,7 +74,7 @@ const DriverPicker = () => {
   }, []);
 
   const shouldLockPick = (pick, date) => {
-    return new Date(`${pick.date}T${pick.time}`) <= new Date(date);
+    return pick >= new Date(date);
   };
 
   return (
@@ -166,29 +167,45 @@ const DriverPicker = () => {
           </Stack>
           <Grid justifyContent={'center'} container spacing={0}>
             {driversData.Drivers.map((driver) => (
-              <DriverProfile
-                key={driver.driverId}
-                driver={driver}
-                points={
-                  standings.find((s) => s.Driver.driverId === driver.driverId)
-                    .points
-                }
-                position={
-                  standings.find((s) => s.Driver.driverId === driver.driverId)
-                    .position
-                }
-                race={schedule.raceName}
-                qualifying={
-                  qualResults &&
-                  qualResults.find(
-                    (position) => position.Driver.driverId === driver.driverId
-                  ).position
-                }
-                pickLocked={picks.find(
-                  (pick) => pick.driverId === driver.driverId
+              <>
+                {console.log(
+                  shouldLockPick(
+                    picks.find((pick) => pick.driverId === driver.driverId)
+                      ?.timestamp
+                  )
                 )}
-                currentRacePick={true}
-              />
+
+                <DriverProfile
+                  key={driver.driverId}
+                  driver={driver}
+                  points={
+                    standings.find((s) => s.Driver.driverId === driver.driverId)
+                      .points
+                  }
+                  position={
+                    standings.find((s) => s.Driver.driverId === driver.driverId)
+                      .position
+                  }
+                  race={schedule.raceName}
+                  qualifying={
+                    qualResults &&
+                    qualResults.find(
+                      (position) => position.Driver.driverId === driver.driverId
+                    ).position
+                  }
+                  // pickLocked={picks.find(
+                  //   (pick) => pick.driverId === driver.driverId
+                  // )}
+                  pickLocked = {shouldLockPick(
+                    picks.find((pick) => pick.driverId === driver.driverId)
+                      ?.timestamp
+                  ,`${schedule.Qualifying.date}T${schedule.Qualifying.time}`)}
+                  currentRacePick={true}
+                  pickLockTime = {new Date(
+                    `${schedule.Qualifying.date}T${schedule.Qualifying.time}`
+                  )}
+                />
+              </>
             ))}
           </Grid>
         </>

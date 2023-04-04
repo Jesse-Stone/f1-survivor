@@ -5,22 +5,39 @@ import { addDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
 import { getDocs, collection, query } from 'firebase/firestore';
 import { auth } from '../config/firebase';
+import { serverTimestamp } from 'firebase/firestore';
 
 const DriverDialog = (props) => {
   const picksCollectionRef = collection(db, 'picks');
 
-  const { onClose, open, race, color, firstName, team, lastName, driverId } =
-    props;
+  const {
+    onClose,
+    open,
+    race,
+    color,
+    firstName,
+    team,
+    lastName,
+    driverId,
+    pickLockTime
+  } = props;
   const [loaded, setLoaded] = useState(false);
   const [pick, setPick] = useState([race, driverId]);
-  const [dialogOpen, setDialogOpen] = useState(false)
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleClose = () => {
-    setDialogOpen(false)
+    setDialogOpen(false);
   };
 
   const handleSubmit = async () => {
-    await addDoc(picksCollectionRef, { race: pick[0], driverId: pick[1], userId: auth.currentUser.uid, name: auth.currentUser.displayName });
+    await addDoc(picksCollectionRef, {
+      race: pick[0],
+      driverId: pick[1],
+      userId: auth.currentUser.uid,
+      name: auth.currentUser.displayName,
+      timestamp: serverTimestamp(),
+      pickLockTime: pickLockTime
+    });
     window.location.reload(false);
     onClose();
   };
