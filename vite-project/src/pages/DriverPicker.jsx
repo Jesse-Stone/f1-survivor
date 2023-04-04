@@ -1,7 +1,7 @@
 import { Divider, Grid, Stack, Typography } from '@mui/material';
 import DriverProfile from '../components/DriverProfile';
 import driversData from '../data/driversData';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import CountdownClock from '../components/CountdownClock';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -18,6 +18,14 @@ const DriverPicker = () => {
   const [picks, setPicks] = useState([]);
 
   const picksCollectionRef = collection(db, 'picks');
+  const currentPick = useMemo(() => {
+    // return picks.find((pick)=> pick.race === schedule.raceName)
+    const currentPick = picks
+      .sort((a, b) => b.timestamp - a.timestamp)
+      .find((pick) => pick.race === schedule.raceName);
+
+    return currentPick ? currentPick.driverId : undefined;
+  }, [picks, schedule]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,11 +83,17 @@ const DriverPicker = () => {
 
   // if pick doesnt exist, return false...else check that pick's qualifying time, if current timestamp is > qual time, pick is locked.
   const shouldLockPick = (picksArr, driver) => {
-    if (picksArr.find((pick)=>pick.driverId === driver.driverId) === undefined){
+    if (
+      picksArr.find((pick) => pick.driverId === driver.driverId) === undefined
+    ) {
       return false;
     }
-      return new Date() > timeStampToDate(picksArr.find((pick) => pick.driverId === driver.driverId)
-      ?.pickLockTime)
+    return (
+      new Date() >
+      timeStampToDate(
+        picksArr.find((pick) => pick.driverId === driver.driverId)?.pickLockTime
+      )
+    );
   };
 
   return (
@@ -172,7 +186,6 @@ const DriverPicker = () => {
           <Grid justifyContent={'center'} container spacing={0}>
             {driversData.Drivers.map((driver) => (
               <>
-              {console.log(shouldLockPick(picks, driver))}
                 <DriverProfile
                   key={driver.driverId}
                   driver={driver}
@@ -191,11 +204,14 @@ const DriverPicker = () => {
                       (position) => position.Driver.driverId === driver.driverId
                     ).position
                   }
-                  pickLocked = {shouldLockPick(picks, driver)}                 
-                  currentRacePick={null}                
-                  pickLockTime = {new Date(
-                    `${schedule.Qualifying.date}T${schedule.Qualifying.time}`
-                  )}
+                  pickLocked={shouldLockPick(picks, driver)}
+                  // currentRacePick={picks.find((pick)=> pick.race === schedule.raceName && pick.driverId === driver.driverId)}
+                  currentRacePick={currentPick === driver.driverId}
+                  pickLockTime={
+                    new Date(
+                      `${schedule.Qualifying.date}T${schedule.Qualifying.time}`
+                    )
+                  }
                 />
               </>
             ))}
