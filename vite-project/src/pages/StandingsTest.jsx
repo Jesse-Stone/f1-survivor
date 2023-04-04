@@ -96,7 +96,7 @@ function StandingsTest() {
             <Table sx={{ minWidth: 250 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ fontFamily: 'f1bold' }}>Rank</TableCell>
+                  <TableCell sx={{ fontFamily: 'f1bold', width:'10px' }}>Rank</TableCell>
                   <TableCell sx={{ fontFamily: 'f1bold' }}>Player</TableCell>
                   <TableCell sx={{ fontFamily: 'f1bold' }} align="right">
                     Points
