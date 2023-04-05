@@ -18,7 +18,6 @@ const DriverProfile = ({
     driver;
 
   const [open, setOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState([]);
 
   const handleDriverCardClick = () => {
     setOpen(true);
@@ -26,6 +25,7 @@ const DriverProfile = ({
 
   const handleClose = () => {
     setOpen(false);
+
   };
 
   return (

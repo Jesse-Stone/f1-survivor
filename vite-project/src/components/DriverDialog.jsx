@@ -3,7 +3,13 @@ import { Stack, Typography, Button, Divider, Box } from '@mui/material';
 import { useState } from 'react';
 import { addDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
-import { getDocs, collection, query } from 'firebase/firestore';
+import {
+  getDocs,
+  collection,
+  query,
+  where,
+  updateDoc
+} from 'firebase/firestore';
 import { auth } from '../config/firebase';
 import { serverTimestamp } from 'firebase/firestore';
 
@@ -23,23 +29,44 @@ const DriverDialog = (props) => {
   } = props;
   const [loaded, setLoaded] = useState(false);
   const [pick, setPick] = useState([race, driverId]);
-  const [dialogOpen, setDialogOpen] = useState(false);
-
-  const handleClose = () => {
-    setDialogOpen(false);
-  };
 
   const handleSubmit = async () => {
-    await addDoc(picksCollectionRef, {
-      race: pick[0],
-      driverId: pick[1],
-      userId: auth.currentUser.uid,
-      name: auth.currentUser.displayName,
-      timestamp: serverTimestamp(),
-      pickLockTime: pickLockTime
-    });
-    window.location.reload(false);
-    onClose();
+   await updatePick()
+   onClose()
+    setTimeout(()=>{
+      window.location.reload(false)
+    },500)
+    ; //FIGURE HOW TO WRITE ASYNC CODE YOU DUMMMY
+  };
+
+
+  const updatePick = async () => {
+
+    getDocs(query(picksCollectionRef, where('race', '==', `${pick[0]}`))).then(
+      (snapshot) => {
+        if(snapshot.empty === true) {
+          addDoc(picksCollectionRef, {
+            race: pick[0],
+            driverId: pick[1],
+            userId: auth.currentUser.uid,
+            name: auth.currentUser.displayName,
+            timestamp: serverTimestamp(),
+            pickLockTime: pickLockTime
+          })
+          
+        } else
+        snapshot.forEach((doc) => {
+          updateDoc(doc.ref, {
+            race: pick[0],
+            driverId: pick[1],
+            userId: auth.currentUser.uid,
+            name: auth.currentUser.displayName,
+            timestamp: serverTimestamp(),
+            pickLockTime: pickLockTime
+          });
+        });
+      }
+    );
   };
 
   return (
