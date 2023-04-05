@@ -38,6 +38,7 @@ function StandingsTest() {
   }, []);
 
   const groupedData = groupBy(picks, (pick) => pick.name);
+  {console.log(groupedData)}
   const userPoints = {};
 
   for (let name in groupedData) {

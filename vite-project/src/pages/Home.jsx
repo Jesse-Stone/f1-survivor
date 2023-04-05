@@ -4,7 +4,6 @@ const Home = () => {
   return (
     <>
       <Stack
-        flexDirection={'row'}
         justifyContent={'center'}
         alignItems={'center'}
       >
@@ -18,6 +17,9 @@ const Home = () => {
           }}
         >
           HOME
+        </Typography>
+        <Typography variant="profile2">
+          TBD info here...rules, real life standings/stats/news?
         </Typography>
       </Stack>
     </>
