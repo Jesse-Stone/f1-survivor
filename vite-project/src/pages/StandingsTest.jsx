@@ -90,8 +90,6 @@ function StandingsTest() {
           >
             STANDINGS
           </Typography>
-          {console.log(userPointsArray)}
-
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 250 }} aria-label="simple table">
               <TableHead>
