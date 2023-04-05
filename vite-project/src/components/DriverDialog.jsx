@@ -8,8 +8,6 @@ import {
   collection,
   query,
   where,
-  doc,
-  setDoc,
   updateDoc
 } from 'firebase/firestore';
 import { auth } from '../config/firebase';
@@ -34,11 +32,11 @@ const DriverDialog = (props) => {
 
   const handleSubmit = async () => {
    await updatePick()
-    // setTimeout(()=>{
-    //   window.location.reload(false)
-    // },1000)
-    onClose(); //FIGURE HOW TO WRITE ASYNC CODE YOU DUMMMY
-    // window.location.reload(false)
+   onClose()
+    setTimeout(()=>{
+      window.location.reload(false)
+    },500)
+    ; //FIGURE HOW TO WRITE ASYNC CODE YOU DUMMMY
   };
 
 
@@ -46,9 +44,8 @@ const DriverDialog = (props) => {
 
     getDocs(query(picksCollectionRef, where('race', '==', `${pick[0]}`))).then(
       (snapshot) => {
-        console.log(snapshot.exists === undefined)
-        if(snapshot.exists === undefined) {
-          addDoc(doc, {
+        if(snapshot.empty === true) {
+          addDoc(picksCollectionRef, {
             race: pick[0],
             driverId: pick[1],
             userId: auth.currentUser.uid,
@@ -59,8 +56,6 @@ const DriverDialog = (props) => {
           
         } else
         snapshot.forEach((doc) => {
-          console.log(doc)
-          console.log('hi')
           updateDoc(doc.ref, {
             race: pick[0],
             driverId: pick[1],
@@ -70,9 +65,7 @@ const DriverDialog = (props) => {
             pickLockTime: pickLockTime
           });
         });
-
       }
-
     );
   };
 
