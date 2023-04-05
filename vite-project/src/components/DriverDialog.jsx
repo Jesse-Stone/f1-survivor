@@ -3,7 +3,15 @@ import { Stack, Typography, Button, Divider, Box } from '@mui/material';
 import { useState } from 'react';
 import { addDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
-import { getDocs, collection, query } from 'firebase/firestore';
+import {
+  getDocs,
+  collection,
+  query,
+  where,
+  doc,
+  setDoc,
+  updateDoc
+} from 'firebase/firestore';
 import { auth } from '../config/firebase';
 import { serverTimestamp } from 'firebase/firestore';
 
@@ -23,23 +31,49 @@ const DriverDialog = (props) => {
   } = props;
   const [loaded, setLoaded] = useState(false);
   const [pick, setPick] = useState([race, driverId]);
-  const [dialogOpen, setDialogOpen] = useState(false);
-
-  const handleClose = () => {
-    setDialogOpen(false);
-  };
 
   const handleSubmit = async () => {
-    await addDoc(picksCollectionRef, {
-      race: pick[0],
-      driverId: pick[1],
-      userId: auth.currentUser.uid,
-      name: auth.currentUser.displayName,
-      timestamp: serverTimestamp(),
-      pickLockTime: pickLockTime
-    });
-    window.location.reload(false);
-    onClose();
+   await updatePick()
+    // setTimeout(()=>{
+    //   window.location.reload(false)
+    // },1000)
+    onClose(); //FIGURE HOW TO WRITE ASYNC CODE YOU DUMMMY
+    // window.location.reload(false)
+  };
+
+
+  const updatePick = async () => {
+
+    getDocs(query(picksCollectionRef, where('race', '==', `${pick[0]}`))).then(
+      (snapshot) => {
+        console.log(snapshot.exists === undefined)
+        if(snapshot.exists === undefined) {
+          addDoc(doc, {
+            race: pick[0],
+            driverId: pick[1],
+            userId: auth.currentUser.uid,
+            name: auth.currentUser.displayName,
+            timestamp: serverTimestamp(),
+            pickLockTime: pickLockTime
+          })
+          
+        } else
+        snapshot.forEach((doc) => {
+          console.log(doc)
+          console.log('hi')
+          updateDoc(doc.ref, {
+            race: pick[0],
+            driverId: pick[1],
+            userId: auth.currentUser.uid,
+            name: auth.currentUser.displayName,
+            timestamp: serverTimestamp(),
+            pickLockTime: pickLockTime
+          });
+        });
+
+      }
+
+    );
   };
 
   return (
