@@ -18,6 +18,7 @@ const Home = () => {
           }}
         >
           HOME
+          Table with Track, driver pick, points placeholder
         </Typography>
       </Stack>
     </>
