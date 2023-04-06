@@ -3,9 +3,9 @@ import { db } from '../config/firebase';
 import axios from 'axios';
 import { getDocs, collection, query, where } from 'firebase/firestore';
 import { Stack } from '@mui/material';
-import { groupBy } from 'lodash';
 import { auth } from '../config/firebase';
 import { CircularProgress, Typography } from '@mui/material';
+import driversData from '../data/driversData';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -20,7 +20,7 @@ const Home = () => {
   const [picks, setPicks] = useState([]);
   const [raceResults, setRaceResults] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [joidnedResults, setJoinedResults] = useState([])
+  const [joidnedResults, setJoinedResults] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,14 +42,15 @@ const Home = () => {
     fetchData();
   }, []);
 
-  
   const getDriverPoints = (raceName, driverId) => {
-    const raceResult = raceResults.find(result => result.raceName === raceName);
-    const driverResult = raceResult?.Results?.find(result => result.Driver.driverId === driverId);
+    const raceResult = raceResults.find(
+      (result) => result.raceName === raceName
+    );
+    const driverResult = raceResult?.Results?.find(
+      (result) => result.Driver.driverId === driverId
+    );
     return driverResult?.points || '-';
   };
-
-
 
   return (
     <>
@@ -75,30 +76,60 @@ const Home = () => {
           >
             HOME
           </Typography>
-          <h4>
-            demo..style table later
-          </h4>
+          {/* <h4>demo..style table later</h4>
           <div>
-      <h2>Picks Table</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Race</th>
-            <th>Driver</th>
-            <th>Points</th>
-          </tr>
-        </thead>
-        <tbody>
-          {picks.map(pick => (
-            <tr key={pick.id}>
-              <td>{pick.race}</td>
-              <td>{pick.driverId}</td>
-              <td>{getDriverPoints(pick.race, pick.driverId)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+            <h2>Picks Table</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Race</th>
+                  <th>Driver</th>
+                  <th>Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                {picks.map((pick) => (
+                  <tr key={pick.id}>
+                    <td>{pick.race}</td>
+                    <td>{pick.driverId}</td>
+                    <td>{getDriverPoints(pick.race, pick.driverId)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div> */}
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 350 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell sx={{ fontFamily: 'f1bold', width: '10px' }}>
+                    Race
+                  </TableCell>
+                  <TableCell sx={{ fontFamily: 'f1bold' }}>Driver</TableCell>
+                  <TableCell sx={{ fontFamily: 'f1bold' }} align="right">
+                    Points
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody sx={{ fontFamily: 'f1bold' }}>
+                {picks.map((pick) => (
+                  <TableRow
+                    key={pick.id}
+                    sx={{
+                      fontFamily: 'f1',
+                      '&:last-child td, &:last-child th': { border: 0 }
+                    }}
+                  >
+                    <TableCell sx={{ fontFamily: 'f1' }}>{pick.race}</TableCell>
+                    <TableCell sx={{ fontFamily: 'f1' }}>{driversData.Drivers.find((driver) => driver.driverId === pick.driverId).familyName}</TableCell>
+                    <TableCell sx={{ fontFamily: 'f1' }} align="right">
+                      {getDriverPoints(pick.race, pick.driverId)}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </Stack>
       )}
     </>
