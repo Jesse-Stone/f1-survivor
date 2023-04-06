@@ -76,37 +76,28 @@ const Home = () => {
           >
             HOME
           </Typography>
-          {/* <h4>demo..style table later</h4>
-          <div>
-            <h2>Picks Table</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th>Race</th>
-                  <th>Driver</th>
-                  <th>Points</th>
-                </tr>
-              </thead>
-              <tbody>
-                {picks.map((pick) => (
-                  <tr key={pick.id}>
-                    <td>{pick.race}</td>
-                    <td>{pick.driverId}</td>
-                    <td>{getDriverPoints(pick.race, pick.driverId)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div> */}
-          <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 350 }} aria-label="simple table">
+          <Typography
+            variant="f1"
+            fontSize={14}
+            mb={1}
+            sx={{
+              '@media (min-width:850px)': {
+                fontSize: '28px'
+              }
+            }}
+          >
+            Your Picks
+          </Typography>
+
+          <TableContainer component={Paper} sx={{maxWidth:'800px'}}>
+            <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ fontFamily: 'f1bold', width: '10px' }}>
+                  <TableCell sx={{ fontFamily: 'f1bold', width: '300px' }}>
                     Race
                   </TableCell>
                   <TableCell sx={{ fontFamily: 'f1bold' }}>Driver</TableCell>
-                  <TableCell sx={{ fontFamily: 'f1bold' }} align="right">
+                  <TableCell sx={{ fontFamily: 'f1bold' }}>
                     Points
                   </TableCell>
                 </TableRow>
@@ -122,7 +113,7 @@ const Home = () => {
                   >
                     <TableCell sx={{ fontFamily: 'f1' }}>{pick.race}</TableCell>
                     <TableCell sx={{ fontFamily: 'f1' }}>{driversData.Drivers.find((driver) => driver.driverId === pick.driverId).familyName}</TableCell>
-                    <TableCell sx={{ fontFamily: 'f1' }} align="right">
+                    <TableCell sx={{ fontFamily: 'f1' }}>
                       {getDriverPoints(pick.race, pick.driverId)}
                     </TableCell>
                   </TableRow>
