@@ -89,7 +89,7 @@ const Home = () => {
             Your Picks
           </Typography>
 
-          <TableContainer component={Paper} sx={{maxWidth:'800px'}}>
+          <TableContainer component={Paper} sx={{maxWidth:'600px'}}>
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
@@ -97,7 +97,7 @@ const Home = () => {
                     Race
                   </TableCell>
                   <TableCell sx={{ fontFamily: 'f1bold' }}>Driver</TableCell>
-                  <TableCell sx={{ fontFamily: 'f1bold' }}>
+                  <TableCell sx={{ fontFamily: 'f1bold' }} align='right'>
                     Points
                   </TableCell>
                 </TableRow>
@@ -113,7 +113,7 @@ const Home = () => {
                   >
                     <TableCell sx={{ fontFamily: 'f1' }}>{pick.race}</TableCell>
                     <TableCell sx={{ fontFamily: 'f1' }}>{driversData.Drivers.find((driver) => driver.driverId === pick.driverId).familyName}</TableCell>
-                    <TableCell sx={{ fontFamily: 'f1' }}>
+                    <TableCell sx={{ fontFamily: 'f1' }} align='right'>
                       {getDriverPoints(pick.race, pick.driverId)}
                     </TableCell>
                   </TableRow>
