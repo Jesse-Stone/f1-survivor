@@ -15,7 +15,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
-function StandingsTest() {
+function Standings() {
   const [picks, setPicks] = useState([]);
   const [raceResults, setRaceResults] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -137,4 +137,4 @@ function StandingsTest() {
   );
 }
 
-export default StandingsTest;
+export default Standings;

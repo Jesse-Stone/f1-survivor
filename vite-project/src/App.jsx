@@ -4,7 +4,7 @@ import React from 'react';
 import NavBar from './components/NavBar';
 import DriverPicker from './pages/DriverPicker';
 import Home from './pages/Home';
-import StandingsTest from './pages/StandingsTest';
+import StandingsTest from './pages/Standings';
 import Login from './pages/Login';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
