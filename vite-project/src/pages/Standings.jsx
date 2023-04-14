@@ -3,8 +3,8 @@ import { db } from '../config/firebase';
 import axios from 'axios';
 import { getDocs, collection, query } from 'firebase/firestore';
 import { Stack } from '@mui/material';
-import { groupBy } from 'lodash';
 import { CircularProgress, Typography } from '@mui/material';
+import { userPointsArray } from '../utils/utils';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -37,37 +37,7 @@ function Standings() {
     fetchData();
   }, []);
 
-  const groupedData = groupBy(picks, (pick) => pick.name);
-  const userPoints = {};
-
-  for (let name in groupedData) {
-    const racePicks = groupedData[name];
-    for (let i = 0; i < racePicks.length; i++) {
-      const { driverId, race } = racePicks[i];
-      const raceResult = raceResults.find((result) => result.raceName === race);
-      if (raceResult) {
-        const result = raceResult.Results.find(
-          (result) => result.Driver.driverId === driverId
-        );
-        if (result) {
-          if (!userPoints[name]) {
-            userPoints[name] = 0;
-          }
-          userPoints[name] += parseInt(result.points);
-        }
-      }
-    }
-  }
-
-  const userPointsArray = Object.entries(userPoints).map(([id, points]) => ({
-    id,
-    points
-  })).sort((a,b)=> b.points - a.points);
-
-  const columns = [
-    { field: 'id', headerName: 'Player', width: 250 },
-    { field: 'points', headerName: 'Points', width: 150 }
-  ];
+  const pointsData = userPointsArray(picks, raceResults);
 
   return (
     <>
@@ -102,7 +72,7 @@ function Standings() {
                 </TableRow>
               </TableHead>
               <TableBody sx={{ fontFamily: 'f1bold' }}>
-                {userPointsArray.map((row, index) => (
+                {pointsData.map((row, index) => (
                   <TableRow
                     key={row.id}
                     sx={{
