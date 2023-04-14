@@ -28,8 +28,13 @@ const NavBar = () => {
 
   const LinkStyled = styled(Link)({
     fontFamily: 'f1',
+    transition: 'all .1s ease-in-out',
     color: 'white',
-    fontSize: '18px'
+    fontSize: '18px',
+    '&:hover':
+     {
+        transform: 'scale(1.1)'
+      }
   });
 
   return (
@@ -60,13 +65,8 @@ const NavBar = () => {
           }
         }}
       >
-        <Stack
-          height={'200px'}
-          mt={5}
-          ml={3}
-          justifyContent={'space-between'}
-        >
-          <LinkStyled to={'/home'} onClick={handleDrawerClose}>
+        <Stack height={'200px'} mt={5} justifyContent={'space-between'} alignItems={'center'}>
+            <LinkStyled to={'/home'} onClick={handleDrawerClose}>
             Home
           </LinkStyled>
           <LinkStyled to={'/makepicks'} onClick={handleDrawerClose}>
