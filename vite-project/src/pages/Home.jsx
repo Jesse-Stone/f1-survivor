@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { db } from '../config/firebase';
 import axios from 'axios';
 import { getDocs, collection, query, where } from 'firebase/firestore';
-import { Box, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 import { auth } from '../config/firebase';
 import { CircularProgress, Typography } from '@mui/material';
 import driversData from '../data/driversData';
@@ -18,7 +18,6 @@ const Home = () => {
   const [picks, setPicks] = useState([]);
   const [raceResults, setRaceResults] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [joidnedResults, setJoinedResults] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {

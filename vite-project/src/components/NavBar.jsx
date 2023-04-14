@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-  AppBar,
-  IconButton,
-  Toolbar,
-  Drawer,
-  Stack,
-} from '@mui/material';
+import { AppBar, IconButton, Toolbar, Drawer, Stack } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/system';
@@ -67,10 +61,10 @@ const NavBar = () => {
         }}
       >
         <Stack
-          height={'30%'}
+          height={'200px'}
           mt={5}
+          ml={3}
           justifyContent={'space-between'}
-          alignItems={'center'}
         >
           <LinkStyled to={'/home'} onClick={handleDrawerClose}>
             Home

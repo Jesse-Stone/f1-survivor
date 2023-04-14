@@ -37,7 +37,7 @@ const DriverProfile = ({
           boxSizing: 'border-box',
           transition: 'all .2s ease-in-out',
           maxWidth: 250,
-          backgroundColor: 'white',
+          backgroundColor: currentRacePick ? '#9cff8f' : 'white',
           opacity: pickLocked ? '.35' : '1',
           paddingRight: 1,
           paddingLeft: 1,
