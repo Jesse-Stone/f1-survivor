@@ -10,22 +10,5 @@ export const toOrdinalSuffix = (num) => {
 };
 
 export const timeStampToDate = (ts)=>{
-  if(ts === undefined){
-    return null
-  }
-return new Date(ts.seconds*1000 + ts.nanoseconds / 10000000);
+  return ts === undefined ? null : new Date(ts.seconds*1000 + ts.nanoseconds / 10000000)
 }
-
-// export const nextRaceDateFinder = (data) => {
-//   const dates = data.dates.map(date => new Date(date)).sort((a, b) => a - b);
-//   const currentDate = new Date();
-//   console.log(dates)
-//   let closestDate = null;
-//   for (let i = dates.length - 1; i >= 0; i--) {
-//     if (dates[i] <= currentDate) {
-//       closestDate = dates[i];
-//       break;
-//     }
-//   }
-//   return closestDate;
-// };

@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { db } from '../config/firebase';
 import axios from 'axios';
 import { getDocs, collection, query, where } from 'firebase/firestore';
-import { Stack } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import { auth } from '../config/firebase';
 import { CircularProgress, Typography } from '@mui/material';
 import driversData from '../data/driversData';
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -14,7 +13,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
 const Home = () => {
   const [picks, setPicks] = useState([]);
@@ -112,7 +110,7 @@ const Home = () => {
                     }}
                   >
                     <TableCell sx={{ fontFamily: 'f1' }}>{pick.race}</TableCell>
-                    <TableCell sx={{ fontFamily: 'f1' }}>{driversData.Drivers.find((driver) => driver.driverId === pick.driverId).familyName}</TableCell>
+                    <TableCell sx={{ fontFamily: 'f1'}}>{driversData.Drivers.find((driver) => driver.driverId === pick.driverId).familyName}</TableCell>
                     <TableCell sx={{ fontFamily: 'f1' }} align='right'>
                       {getDriverPoints(pick.race, pick.driverId)}
                     </TableCell>
