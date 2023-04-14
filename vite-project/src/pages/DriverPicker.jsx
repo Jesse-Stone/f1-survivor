@@ -157,13 +157,13 @@ const DriverPicker = () => {
               </Stack>
               <Stack>
                 <Divider
-                  orientation="vertical"
+                  orientation="horizontal"
                   sx={{
                     backgroundColor: '#FF1801',
                     height: '0px',
                     '@media (min-width:850px)': {
                       height: '100px',
-                      width: '2px'
+                      width: '2px',
                     }
                   }}
                 />

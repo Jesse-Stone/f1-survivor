@@ -31,7 +31,7 @@ const CountdownClock = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <Stack justifyContent={'center'} width={'40vh'}>
+    <Stack justifyContent={'center'} width={'350px'}>
       <Stack direction={'row'} justifyContent={'space-around'}>
         <Stack justifyContent={'center'} alignItems={'center'}>
         <Typography variant={'profile2'} fontSize={18}>Days</Typography>

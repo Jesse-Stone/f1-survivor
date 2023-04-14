@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from './config/firebase';
+import UserIcon from './components/UserIcon';
 
 const queryClient = new QueryClient();
 
@@ -18,7 +19,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        {user && <NavBar />}
+        {user && <><NavBar /> <UserIcon user={user.displayName}/> </>}
         <Routes>
           <Route path="/" Component={Login} exact></Route>
           {user && (
