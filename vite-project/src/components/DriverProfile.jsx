@@ -12,7 +12,8 @@ const DriverProfile = ({
   qualifying,
   pickLocked,
   currentRacePick,
-  pickLockTime
+  pickLockTime,
+  getPicks
 }) => {
   const { givenName, familyName, flag, permanentNumber, team, driverId } =
     driver;
@@ -24,8 +25,10 @@ const DriverProfile = ({
   };
 
   const handleClose = () => {
+    setTimeout(() => {
+      getPicks();
+    }, 500);
     setOpen(false);
-
   };
 
   return (
@@ -133,7 +136,14 @@ const DriverProfile = ({
               </Stack>
             )}
             {currentRacePick && (
-              <Stack direction={'row'} mb={-2} backgroundColor={'green'} justifyContent={'center'}width={'40%'} borderRadius={2}>
+              <Stack
+                direction={'row'}
+                mb={-2}
+                backgroundColor={'green'}
+                justifyContent={'center'}
+                width={'40%'}
+                borderRadius={2}
+              >
                 <Typography color="white" fontSize={10}>
                   Current Pick
                 </Typography>

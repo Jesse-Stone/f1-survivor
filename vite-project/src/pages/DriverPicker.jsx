@@ -19,13 +19,30 @@ const DriverPicker = () => {
 
   const picksCollectionRef = collection(db, 'picks');
   const currentPick = useMemo(() => {
-    // return picks.find((pick)=> pick.race === schedule.raceName)
     const currentPick = picks
       .sort((a, b) => b.timestamp - a.timestamp)
       .find((pick) => pick.race === schedule.raceName);
 
     return currentPick ? currentPick.driverId : undefined;
   }, [picks, schedule]);
+
+  const getPicks = async () => {
+    try {
+      const data = await getDocs(
+        query(
+          picksCollectionRef,
+          where('userId', '==', auth.currentUser.uid)
+        )
+      );
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id
+      }));
+      setPicks(filteredData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,23 +69,7 @@ const DriverPicker = () => {
           }
         })
         .catch((error) => setQualResults(null));
-      const getPicks = async () => {
-        try {
-          const data = await getDocs(
-            query(
-              picksCollectionRef,
-              where('userId', '==', auth.currentUser.uid)
-            )
-          );
-          const filteredData = data.docs.map((doc) => ({
-            ...doc.data(),
-            id: doc.id
-          }));
-          setPicks(filteredData);
-        } catch (err) {
-          console.log(err);
-        }
-      };
+      
       const promises = [
         scheduleResponse,
         qualifyingResponse,
@@ -212,6 +213,7 @@ const DriverPicker = () => {
                       `${schedule.Qualifying.date}T${schedule.Qualifying.time}`
                     )
                   }
+                  getPicks = {getPicks}
                 />
               </>
             ))}

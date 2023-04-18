@@ -33,30 +33,24 @@ const DriverDialog = (props) => {
   const handleSubmit = async () => {
    await updatePick()
    onClose()
-    setTimeout(()=>{
-      window.location.reload(false)
-    },500)
-    ; //FIGURE HOW TO WRITE ASYNC CODE YOU DUMMMY
   };
 
 
   const updatePick = async () => {
-
     getDocs(query(picksCollectionRef, where('race', '==', `${pick[0]}`))).then(
-      (snapshot) => {
+      async (snapshot) => {
         if(snapshot.empty === true) {
-          addDoc(picksCollectionRef, {
+          await addDoc(picksCollectionRef, {
             race: pick[0],
             driverId: pick[1],
             userId: auth.currentUser.uid,
             name: auth.currentUser.displayName,
             timestamp: serverTimestamp(),
             pickLockTime: pickLockTime
-          })
-          
+          })          
         } else
-        snapshot.forEach((doc) => {
-          updateDoc(doc.ref, {
+        snapshot.forEach( async (doc) => {
+          await updateDoc(doc.ref, {
             race: pick[0],
             driverId: pick[1],
             userId: auth.currentUser.uid,
